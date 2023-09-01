@@ -31,20 +31,20 @@ public class PositiveTests {
 
         System.out.println("Page is opened");
 
-        // enter username
+        // Enter username
         WebElement username = driver.findElement(By.id("username"));
         username.sendKeys("tomsmith");
 
-        // enter password
+        // Enter password
         WebElement password = driver.findElement(By.name("password"));
         password.sendKeys("SuperSecretPassword!");
 
-        // click login button
+        //Click the login button
         WebElement logInButton = driver.findElement(By.tagName("button"));
         logInButton.click();
 
-        // verifications
-        // new url
+        // Verifications
+        // New URL
         String expectedUrl = "http://the-internet.herokuapp.com/secure";
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl, "Actual URL page is not the same as expected.");
@@ -63,8 +63,6 @@ public class PositiveTests {
 
         driver.close();
         System.out.println("Test is finished");
-
-
     }
 
     /**
@@ -72,6 +70,7 @@ public class PositiveTests {
      *
      * @param seconds
      */
+    
     private static void sleep(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
