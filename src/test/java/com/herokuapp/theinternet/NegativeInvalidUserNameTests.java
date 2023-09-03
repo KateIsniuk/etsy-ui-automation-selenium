@@ -12,6 +12,7 @@ public class NegativeInvalidUserNameTests {
     private String expectedMessage;
 
     @Test
+    //Change the method name so that it starts in lowercase 
     public void InvalidUserName() {
         System.out.println("Test is started");
 
