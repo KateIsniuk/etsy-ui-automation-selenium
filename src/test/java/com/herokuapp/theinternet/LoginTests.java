@@ -4,31 +4,46 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
-public class loginTests {
-
-    private String expectedMessage;
-
-    @Test (priority = 1, groups = {"positiveTests", "smokeTests"})
-    public void positiveLoginTest() {
-        System.out.println("Test is started");
-
+public class LoginTests {
+    private WebDriver driver;
+    @Parameters({"browser"})
+    @BeforeMethod(alwaysRun = true)
+    public void setUp(@Optional("chrome") String browser) {
         // Create driver
-        WebDriver driver = new ChromeDriver();
-        System.out.println("Browser is started");
-        sleep(1);
+
+        switch (browser) {
+            case "chrome":
+                driver = new ChromeDriver();
+                System.out.println(browser + " browser is started");
+                break;
+            case "safari":
+                driver = new SafariDriver();
+                System.out.println(browser + " browser is started");
+                break;
+            default:
+                System.out.println("Don't know how to start " + browser+ " started Chrome browser instead.");
+                driver = new ChromeDriver();
+                break;
+        }
+
 
         // Open tested page
         String url = "http://the-internet.herokuapp.com/login";
         driver.get(url);
-        sleep(1);
 
         driver.manage().window().maximize();
 
         System.out.println("Page is opened");
+    }
+
+    @Test(priority = 1, groups = {"positiveTests", "smokeTests"})
+    public void positiveLoginTest() {
+        System.out.println("Test is started");
 
         // Enter username
         WebElement username = driver.findElement(By.id("username"));
@@ -56,31 +71,14 @@ public class loginTests {
         WebElement successfulMessage = driver.findElement(By.cssSelector("#flash"));
         String expectedMessage = "You logged into a secure area!";
         String actualMessage = successfulMessage.getText();
-        //  Assert.assertEquals(actualMessage,expectedMessage, "Actual message is not the same as expected.");
+
         Assert.assertTrue(actualMessage.contains(expectedMessage), "Actual message does not contain expected message.\nActual Message: "
                 + actualMessage + "\nExpected Message: " + expectedMessage);
-
-        driver.close();
-        System.out.println("Test is finished");
     }
 
     @Parameters({"username", "password", "expectedMessage"})
-    @Test (priority = 2, groups = {"negativeTests", "smokeTests"})
+    @Test(priority = 2, groups = {"negativeTests", "smokeTests"})
     public void negativeLoginTest(String username, String password, String expectedErrorMessage) {
-        System.out.println("Test is started");
-
-        // Create driver
-
-        WebDriver driver = new ChromeDriver();
-        System.out.println("Browser is started");
-
-        // Open tested page
-        String url = "http://the-internet.herokuapp.com/login";
-        driver.get(url);
-
-        driver.manage().window().maximize();
-
-        System.out.println("Page is opened");
 
         // Enter username
         WebElement usernameElement = driver.findElement(By.id("username"));
@@ -104,8 +102,20 @@ public class loginTests {
         Assert.assertTrue(actualMessage.contains(expectedErrorMessage), "Actual message does not contain expected message.\nActual Message: "
                 + actualMessage + "\nExpected Message: " + expectedErrorMessage);
 
+    }
+
+    @AfterMethod(alwaysRun = true)
+    private void tearDown() {
         driver.quit();
         System.out.println("Test is finished");
-
     }
+
+    public void sleep(long m) {
+        try {
+            driver.wait(m);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

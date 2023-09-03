@@ -9,15 +9,16 @@
             </run>
         </groups>
         <classes>
-            <class name="com.herokuapp.theinternet.loginTests"/>
+            <class name="com.herokuapp.theinternet.LoginTests"/>
         </classes>
     </test>
     <test name="NegativeUsernameTests">
+        <parameter name="browser" value="chrome"/>
         <parameter name="username" value="invalidUsername"/>
         <parameter name="password" value="SuperSecretPassword!"/>
         <parameter name="expectedMessage" value="Your username is invalid!"/>
         <classes>
-            <class name="com.herokuapp.theinternet.NegativeTests">
+            <class name="com.herokuapp.theinternet.LoginTests">
                 <methods>
                     <include name="negativeLoginTest">
                     </include>
@@ -27,11 +28,12 @@
     </test>
 
     <test name="NegativePasswordTests">
+        <parameter name="browser" value="chrome"/>
         <parameter name="username" value="tomsmith"/>
         <parameter name="password" value="SuperSecretPassword"/>
         <parameter name="expectedMessage" value="Your password is invalid!"/>
         <classes>
-            <class name="com.herokuapp.theinternet.NegativeTests">
+            <class name="com.herokuapp.theinternet.LoginTests">
                 <methods>
                     <include name="negativeLoginTest">
                     </include>
