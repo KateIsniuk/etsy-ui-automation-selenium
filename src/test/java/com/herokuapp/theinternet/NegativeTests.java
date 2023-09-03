@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class NegativeTests {
-    private String expectedMessage;
+    private String expectedMessage; // variable can be deleted 
 
    /* @Test (priority = 2, groups = { "negariveTests"})
 
