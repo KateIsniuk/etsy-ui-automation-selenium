@@ -12,6 +12,7 @@ public class NegativeInvalidPasswordTests {
     private String expectedMessage;
 
     @Test
+    //Change the method name so that it starts in lowercase 
     public void InvalidPassword() {
         System.out.println("Test is started");
 
