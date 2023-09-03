@@ -108,18 +108,4 @@ public class loginTests {
         System.out.println("Test is finished");
 
     }
-
-    /**
-     * Stop execution for the given amount of time
-     *
-     * @param seconds
-     */
-    
-    private static void sleep(int seconds) {
-        try {
-            Thread.sleep(seconds * 1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
