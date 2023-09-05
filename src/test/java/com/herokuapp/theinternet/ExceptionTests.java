@@ -12,8 +12,6 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 
 public class ExceptionTests {
     private WebDriver driver;
@@ -43,19 +41,26 @@ public class ExceptionTests {
         driver.get(url);
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+       // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         System.out.println("Page is opened");
     }
 
     @Test
-    public void homeworkTest() {
+    public void NoSuchElementException() {
 //        Open page is opened in the before step
 
 //        Click Add button
 
         WebElement addButton = driver.findElement(By.id("add_btn"));
         addButton.click();
+
+        // to wait you can use this or implicitlyWait
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 //        Verify Row 2 input field is displayed
 

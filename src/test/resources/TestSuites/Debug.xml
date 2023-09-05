@@ -8,7 +8,7 @@
         <classes>
             <class name="com.herokuapp.theinternet.ExceptionTests">
                 <methods>
-                    <include name="homeworkTest">
+                    <include name="noSuchElementException">
                     </include>
                 </methods>
             </class>
