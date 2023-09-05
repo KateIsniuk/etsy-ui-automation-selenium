@@ -89,6 +89,39 @@ public class ExceptionTests {
         Assert.assertEquals(confirmationMessageText, "Row 2 was saved", "Row 2 was NOT saved");
 
     }
+    @Test(priority = 3, groups = {"positiveTests", "smokeTests"})
+    public void invalidElementStateException(){
+//        Open page
+//        Click Add button
+        WebElement addButton = driver.findElement(By.id("add_btn"));
+        addButton.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement rowElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
+
+//        Add text to the field
+        rowElement.sendKeys("Pizza");
+
+//        Clear input field
+        rowElement.clear();
+
+//        Type text into the input field
+        rowElement.sendKeys("Cupcakes");
+
+//        Click the Save button
+        WebElement saveButton = driver.findElement(By.xpath("//div[@id='row2']//button[@name='Save']"));
+        saveButton.click();
+
+//        Verify text changed
+        String value = rowElement.getAttribute("value");
+        Assert.assertEquals(value,"Cupcakes","Input is not expected");
+
+//        Verify confirmation text
+        WebElement confirmation = driver.findElement(By.xpath("//div[@id='confirmation']"));
+        String confirmationMessageText = confirmation.getText();
+        Assert.assertEquals(confirmationMessageText, "Row 2 was saved", "Row 2 was NOT saved");
+
+    }
 
     @AfterMethod(alwaysRun = true)
     private void tearDown() {

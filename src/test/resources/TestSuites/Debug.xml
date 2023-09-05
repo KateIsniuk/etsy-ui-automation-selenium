@@ -26,5 +26,17 @@
             </class>
         </classes>
     </test>
+    <test name="ExceptionTests">
+        <parameter name="browser" value="chrome">
+        </parameter>
+        <classes>
+            <class name="com.herokuapp.theinternet.ExceptionTests">
+                <methods>
+                    <include name="invalidElementStateException">
+                    </include>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
 
