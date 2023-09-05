@@ -48,12 +48,11 @@ public class ExceptionTests {
         System.out.println("Page is opened");
     }
 
-    @Test
+    @Test(priority = 1, groups = {"positiveTests", "smokeTests"})
     public void noSuchElementException() {
 //        Open page is opened in the before step
 
 //        Click Add button
-
         WebElement addButton = driver.findElement(By.id("add_btn"));
         addButton.click();
 
@@ -63,16 +62,32 @@ public class ExceptionTests {
 //        explicitlyWait
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement rowElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
-        rowElement.sendKeys("Pizza");
 
 //        Verify Row 2 input field is displayed
         Assert.assertTrue(rowElement.isDisplayed(), "Row 2 is not displayed.");
 
+    }
+    @Test(priority = 2, groups = {"positiveTests", "smokeTests"})
+    public void elementNotInteractableException(){
+//        Open page is opened in the before step
+//        Click Add button
+        WebElement addButton = driver.findElement(By.id("add_btn"));
+        addButton.click();
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement rowElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
 
-//        Click the Save button
-        WebElement saveButton = driver.findElement(By.xpath("//div[@id='rows']/div[3]/div[@class='row']/button[@id='save_btn']"));
+//        Add text to the field
+        rowElement.sendKeys("Pizza");
+
+//         Click the Save button
+        WebElement saveButton = driver.findElement(By.xpath("//div[@id='row2']//button[@name='Save']"));
         saveButton.click();
+
+        WebElement confirmation = driver.findElement(By.xpath("//div[@id='confirmation']"));
+        String confirmationMessageText = confirmation.getText();
+        Assert.assertEquals(confirmationMessageText, "Row 2 was saved", "Row 2 was NOT saved");
+
     }
 
     @AfterMethod(alwaysRun = true)

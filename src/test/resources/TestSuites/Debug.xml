@@ -14,5 +14,17 @@
             </class>
         </classes>
     </test>
-
+    <test name="ExceptionTestsTests">
+        <parameter name="browser" value="chrome">
+        </parameter>
+        <classes>
+            <class name="com.herokuapp.theinternet.ExceptionTests">
+                <methods>
+                    <include name="elementNotInteractableException">
+                    </include>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
+
