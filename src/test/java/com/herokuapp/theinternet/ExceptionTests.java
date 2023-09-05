@@ -63,7 +63,7 @@ public class ExceptionTests {
         Assert.assertTrue(rowElement.isDisplayed(), "Is not displayed.");
         rowElement.sendKeys("Pizza");
 
-//        Click Save button
+//        Click the Save button
 
         WebElement saveButton = driver.findElement(By.xpath("//div[@id='rows']/div[3]/div[@class='row']/button[@id='save_btn']"));
         saveButton.click();
