@@ -56,10 +56,10 @@ public class ExceptionTests {
         WebElement addButton = driver.findElement(By.id("add_btn"));
         addButton.click();
 
-//        implicitlyWait
+//        ImplicitlyWait
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-//        explicitlyWait
+//        ExplicitlyWait
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement rowElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
 
@@ -80,7 +80,7 @@ public class ExceptionTests {
 //        Add text to the field
         rowElement.sendKeys("Pizza");
 
-//         Click the Save button
+//        Click the Save button
         WebElement saveButton = driver.findElement(By.xpath("//div[@id='row2']//button[@name='Save']"));
         saveButton.click();
 
