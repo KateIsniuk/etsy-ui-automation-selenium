@@ -5,12 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import java.time.Duration;
 
 
 public class ExceptionTests {
@@ -41,13 +44,12 @@ public class ExceptionTests {
         driver.get(url);
 
         driver.manage().window().maximize();
-       // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         System.out.println("Page is opened");
     }
 
     @Test
-    public void NoSuchElementException() {
+    public void noSuchElementException() {
 //        Open page is opened in the before step
 
 //        Click Add button
@@ -55,21 +57,20 @@ public class ExceptionTests {
         WebElement addButton = driver.findElement(By.id("add_btn"));
         addButton.click();
 
-        // to wait you can use this or implicitlyWait
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        implicitlyWait
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-//        Verify Row 2 input field is displayed
-
-        WebElement rowElement = driver.findElement(By.xpath("//div[@id='row2']/input"));
-        Assert.assertTrue(rowElement.isDisplayed(), "Is not displayed.");
+//        explicitlyWait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement rowElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
         rowElement.sendKeys("Pizza");
 
-//        Click the Save button
+//        Verify Row 2 input field is displayed
+        Assert.assertTrue(rowElement.isDisplayed(), "Row 2 is not displayed.");
 
+
+
+//        Click the Save button
         WebElement saveButton = driver.findElement(By.xpath("//div[@id='rows']/div[3]/div[@class='row']/button[@id='save_btn']"));
         saveButton.click();
     }
