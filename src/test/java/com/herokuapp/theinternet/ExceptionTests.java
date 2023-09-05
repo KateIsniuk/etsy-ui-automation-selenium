@@ -114,7 +114,7 @@ public class ExceptionTests {
 
 //        Verify text changed
         String value = rowElement.getAttribute("value");
-        Assert.assertEquals(value,"Cupcakes","Input is not expected");
+        Assert.assertEquals(value,"Cupcakes","Input is not as expected");
 
 //        Verify confirmation text
         WebElement confirmation = driver.findElement(By.xpath("//div[@id='confirmation']"));
