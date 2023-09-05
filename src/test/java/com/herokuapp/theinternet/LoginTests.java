@@ -10,12 +10,14 @@ import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
 public class LoginTests {
+    
     private WebDriver driver;
+   
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
+       
         // Create driver
-
         switch (browser) {
             case "chrome":
                 driver = new ChromeDriver();
@@ -30,7 +32,6 @@ public class LoginTests {
                 driver = new ChromeDriver();
                 break;
         }
-
 
         // Open tested page
         String url = "http://the-internet.herokuapp.com/login";
@@ -108,14 +109,6 @@ public class LoginTests {
     private void tearDown() {
         driver.quit();
         System.out.println("Test is finished");
-    }
-
-    public void sleep(long m) {
-        try {
-            driver.wait(m);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }
