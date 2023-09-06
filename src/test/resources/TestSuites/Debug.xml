@@ -14,7 +14,7 @@
             </class>
         </classes>
     </test>
-    <test name="ExceptionTestsTests">
+    <test name="ElementNotInteractableException">
         <parameter name="browser" value="chrome">
         </parameter>
         <classes>
@@ -26,7 +26,7 @@
             </class>
         </classes>
     </test>
-    <test name="ExceptionTests">
+    <test name="InvalidElementStateException">
         <parameter name="browser" value="chrome">
         </parameter>
         <classes>
@@ -38,5 +38,30 @@
             </class>
         </classes>
     </test>
+<test name="StaleElementReferenceExceptionTest">
+<parameter name="browser" value="chrome">
+</parameter>
+<classes>
+    <class name="com.herokuapp.theinternet.ExceptionTests">
+        <methods>
+            <include name="staleElementReferenceException">
+            </include>
+        </methods>
+    </class>
+</classes>
+</test>
+<test name="ExceptionTimeOutException">
+<parameter name="browser" value="chrome">
+</parameter>
+<classes>
+    <class name="com.herokuapp.theinternet.ExceptionTests">
+        <methods>
+            <include name="timeoutException">
+            </include>
+        </methods>
+    </class>
+</classes>
+</test>
+
 </suite>
 
