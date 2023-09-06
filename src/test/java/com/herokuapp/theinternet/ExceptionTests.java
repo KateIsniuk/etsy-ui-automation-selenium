@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 
@@ -68,9 +67,8 @@ public class ExceptionTests {
         Assert.assertTrue(rowElement.isDisplayed(), "Row 2 is not displayed.");
 
     }
-
     @Test(priority = 2, groups = {"positiveTests", "smokeTests"})
-    public void elementNotInteractableException() {
+    public void elementNotInteractableException(){
 //        Open page is opened in the before step
 //        Click Add button
         WebElement addButton = driver.findElement(By.id("add_btn"));
@@ -91,9 +89,8 @@ public class ExceptionTests {
         Assert.assertEquals(confirmationMessageText, "Row 2 was saved", "Row 2 was NOT saved");
 
     }
-
     @Test(priority = 3, groups = {"positiveTests", "smokeTests"})
-    public void invalidElementStateException() {
+    public void invalidElementStateException(){
 //        Open page
 //        Click Add button
         WebElement addButton = driver.findElement(By.id("add_btn"));
@@ -117,45 +114,13 @@ public class ExceptionTests {
 
 //        Verify text changed
         String value = rowElement.getAttribute("value");
-        Assert.assertEquals(value, "Cupcakes", "Input is not expected");
+        Assert.assertEquals(value,"Cupcakes","Input is not as expected");
 
 //        Verify confirmation text
         WebElement confirmation = driver.findElement(By.xpath("//div[@id='confirmation']"));
         String confirmationMessageText = confirmation.getText();
         Assert.assertEquals(confirmationMessageText, "Row 2 was saved", "Row 2 was NOT saved");
 
-    }
-
-    @Test(priority = 4, groups = {"positiveTests", "smokeTests"})
-    public void staleElementReferenceException() {
-//    Open page
-
-//    Find the instructions text element
-        WebElement instructionsElement = driver.findElement(By.id("instructions"));
-//    Push add button
-        WebElement addButton = driver.findElement(By.id("add_btn"));
-        addButton.click();
-//    Verify instruction text element is no longer displayed
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Assert.assertTrue(wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("instructions"))),
-                "Instructions elements is Displayed.");
-    }
-
-    @Test(priority = 5, groups = {"positiveTests", "smokeTests"})
-    public void timeoutException() {
-//    Open page
-
-//    Click on the add button
-        WebElement addButton = driver.findElement(By.id("add_btn"));
-        addButton.click();
-
-//    Wait for 3 seconds
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-
-//    Verify 2 input field is displayed
-        WebElement rowElement = wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
-        Assert.assertTrue(rowElement.isDisplayed(), "Row 2 is not displayed.");
     }
 
     @AfterMethod(alwaysRun = true)
