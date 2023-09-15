@@ -29,7 +29,7 @@ public class LeatherBags {
                 driver.findElement(By.xpath("//button[@class = 'wt-btn wt-btn--filled wt-mb-xs-0']"));
         popUp.click();
 
-        //Find search field
+        //Find the search field
         WebElement searchField = driver.findElement(By.xpath("//input[@name='search_query']"));
         searchField.sendKeys("leather Bags");
         searchField.sendKeys(Keys.ENTER);
