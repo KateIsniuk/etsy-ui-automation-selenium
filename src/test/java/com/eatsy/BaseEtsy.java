@@ -10,6 +10,7 @@ import java.util.logging.Level;
 public class BaseEtsy {
     private static final Logger logger = Logger.getLogger(BeforeClass.class.getName());
     public WebDriver driver;
+  
     @BeforeClass
     public void setUp(){
         driver = new ChromeDriver();
