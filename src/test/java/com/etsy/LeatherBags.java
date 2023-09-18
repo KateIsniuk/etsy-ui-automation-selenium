@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LeatherBags {
+    
     private WebDriver driver;
 
     @BeforeMethod
@@ -23,6 +24,7 @@ public class LeatherBags {
 
         System.out.println("Page is opened");
     }
+    
     @Test
     public void test(){
         WebElement popUp =
@@ -35,6 +37,7 @@ public class LeatherBags {
         searchField.sendKeys(Keys.ENTER);
 
     }
+    
     @AfterMethod(alwaysRun = true)
     private void tearDown() {
         driver.quit();
