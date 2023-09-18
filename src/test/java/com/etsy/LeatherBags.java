@@ -1,4 +1,4 @@
-package com.eatsy;
+package com.etsy;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

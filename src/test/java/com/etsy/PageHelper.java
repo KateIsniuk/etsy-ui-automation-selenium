@@ -1,4 +1,4 @@
-package com.eatsy;
+package com.etsy;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -19,7 +19,7 @@ public class PageHelper {
         return driver.findElement(By.xpath("//input[@name='search_query']"));
     }
 
-    public static void enterToSearchField(WebElement search, String searchQuery) {
+    public static void enterToSearchField(@org.jetbrains.annotations.NotNull WebElement search, String searchQuery) {
         search.sendKeys(searchQuery);
     }
 

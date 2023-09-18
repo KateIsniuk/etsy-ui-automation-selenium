@@ -1,4 +1,4 @@
-package com.eatsy;
+package com.etsy;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
