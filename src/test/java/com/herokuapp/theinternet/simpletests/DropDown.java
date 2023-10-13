@@ -15,7 +15,6 @@ public class DropDown {
         dropDownMenu.click();
 
         WebElement autocomplete = driver.findElement(By.id("autocomplete"));
-
         autocomplete.click();
 
         driver.quit();
