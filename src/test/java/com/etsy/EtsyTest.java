@@ -11,10 +11,10 @@ public class EtsyTest extends BaseEtsy {
         WebElement webElement = PageHelper.popUp(this.driver);
         PageHelper.clickPopUp(webElement);
 
-        WebElement searchElement = PageHelper.searchField(this.driver);
+        WebElement searchElement = SearchElementsPageObject.searchField(this.driver);
         PageHelper.enterToSearchField(searchElement, "leather Bags");
 
-        WebElement hitEnterIntoField = PageHelper.searchField(this.driver);
+        WebElement hitEnterIntoField = SearchElementsPageObject.searchField(this.driver);
         PageHelper.hitEnter(hitEnterIntoField);
 
         WebElement checkFilterElement = PageHelper.allFilters(this.driver);

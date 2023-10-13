@@ -1,5 +1,6 @@
 package com.etsy;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -8,11 +9,12 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 
 public class BaseEtsy {
-    private static final Logger logger = Logger.getLogger(BeforeClass.class.getName());
+    private static final Logger logger = Logger.getLogger(BaseEtsy.class.getName());
     public WebDriver driver;
   
     @BeforeClass
     public void setUp() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         String url = "https://www.etsy.com/";
         driver.get(url);

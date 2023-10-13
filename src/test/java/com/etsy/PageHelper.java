@@ -15,11 +15,7 @@ public class PageHelper {
         element.click();
     }
 
-    public static WebElement searchField(WebDriver driver) {
-        return driver.findElement(By.xpath("//input[@name='search_query']"));
-    }
-
-    public static void enterToSearchField(@org.jetbrains.annotations.NotNull WebElement search, String searchQuery) {
+    public static void enterToSearchField(WebElement search, String searchQuery) {
         search.sendKeys(searchQuery);
     }
 
