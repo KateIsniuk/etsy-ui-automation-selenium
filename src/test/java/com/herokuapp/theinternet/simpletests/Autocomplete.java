@@ -20,10 +20,10 @@ public class Autocomplete {
 
         autocomplete.sendKeys("1555 Park Blvd, Palo Alto, CA");
 
-        // Implicit Wait
+       // Implicit Wait
        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        // Explicit Wait
+       // Explicit Wait
         WebDriverWait wait  = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement  autocompleteResult =
