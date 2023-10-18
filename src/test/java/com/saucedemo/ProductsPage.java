@@ -22,5 +22,6 @@ public class ProductsPage {
     public void clickProduct1() {
         WebElement product1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("add-to-cart-sauce-labs-backpack")));
         product1.click();
+        
     }
 }
