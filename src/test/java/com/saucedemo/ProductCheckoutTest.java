@@ -19,8 +19,7 @@ public class ProductCheckoutTest extends BasicSaucedemoTest {
         ProductsPage productsPage = new ProductsPage(driver);
 
         // Step 2 Select 2 products
-        productsPage.clickProduct1();
-        productsPage.clickProduct2();
+        productsPage.selectProductItems();
 
         // Step 3 Click on the card element
         productsPage.goToShoppingCart();
