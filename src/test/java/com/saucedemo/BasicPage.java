@@ -7,10 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import java.time.Duration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +31,14 @@ public class BasicPage {
     public void card() {
         WebElement card = driver.findElement(By.cssSelector(".shopping_cart_link"));
         card.click();
+    }
+    public String getOrderConfirmationMessage() {
+        WebElement confirmationMessageElement = driver.findElement(By.xpath("//h2[contains(text(), 'Thank you for your order!')]"));
+        return confirmationMessageElement.getText();
+    }
+    public void messageOfComplete() {
+        String actualMessage = getOrderConfirmationMessage();
+        Assert.assertEquals(actualMessage, "Thank you for your order!");
     }
 
 //    @AfterClass
