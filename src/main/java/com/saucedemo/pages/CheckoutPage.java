@@ -9,7 +9,7 @@ public class CheckoutPage {
         this.driver = driver;
     }
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public void clickCheckoutButton() {
         WebElement checkout = driver.findElement(By.id("checkout"));

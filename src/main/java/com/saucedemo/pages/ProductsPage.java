@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 public class ProductsPage {
 
-    private WebDriverWait wait;
-    private WebDriver driver;
+    private final WebDriverWait wait;
+    private final WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +25,10 @@ public class ProductsPage {
         WebElement product1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("add-to-cart-sauce-labs-backpack")));
         product1.click();
         
+    }
+
+    public void selectProductItem() {
+
     }
 
     public void goToShoppingCart() {

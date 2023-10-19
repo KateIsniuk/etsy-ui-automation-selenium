@@ -2,7 +2,7 @@ package com.saucedemo;
 
 import com.saucedemo.pages.CheckoutPage;
 import com.saucedemo.pages.LoginPage;
-import com.saucedemo.pages.OrderComplitionPage;
+import com.saucedemo.pages.OrderCompletionPage;
 import com.saucedemo.pages.ProductsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -39,9 +39,9 @@ public class ProductCheckoutTest extends BasicSaucedemoTest {
         checkoutPage.finishOrder();
 
         // Step 8 Validate a message of  complete
-        OrderComplitionPage orderComplitionPage = new OrderComplitionPage(driver);
+        OrderCompletionPage orderCompletionPage = new OrderCompletionPage(driver);
 
-        String actualMessage = orderComplitionPage.getOrderConfirmationMessage();
+        String actualMessage = orderCompletionPage.getOrderConfirmationMessage();
         Assert.assertEquals(actualMessage, "Thank you for your order!");
     }
 }
