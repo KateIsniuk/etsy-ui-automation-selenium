@@ -1,4 +1,4 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 public class ProductsPage {
 
-    public WebDriverWait wait;
+    private WebDriverWait wait;
+    private WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
+        this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     public void clickProduct2() {
@@ -23,5 +25,10 @@ public class ProductsPage {
         WebElement product1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("add-to-cart-sauce-labs-backpack")));
         product1.click();
         
+    }
+
+    public void goToShoppingCart() {
+        WebElement card = driver.findElement(By.cssSelector(".shopping_cart_link"));
+        card.click();
     }
 }
