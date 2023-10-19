@@ -41,11 +41,11 @@ public class BasicPage {
         Assert.assertEquals(actualMessage, "Thank you for your order!");
     }
 
-//    @AfterClass
-//    public void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//        logger.log(Level.INFO, "Test is finished");
-//    }
+   @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+        logger.log(Level.INFO, "Test is finished");
+   }
 }
