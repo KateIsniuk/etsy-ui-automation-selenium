@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class OrderComplitionPage {
+    
     private final WebDriver driver;
+    
     public OrderComplitionPage(WebDriver driver) {
         this.driver = driver;
     }
