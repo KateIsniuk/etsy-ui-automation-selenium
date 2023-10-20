@@ -18,12 +18,9 @@ public class ProductsPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void selectProductItems() {
-        WebElement item1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button#add-to-cart-sauce-labs-bike-light")));
-        item1.click();
-
-        WebElement item2 = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("add-to-cart-sauce-labs-backpack")));
-        item2.click();
+    public void selectProductItems(String item01, String item02) {
+        WebElement item = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(), 'Add to cart')]")));
+        item.click();
     }
 
     public void goToShoppingCart() {

@@ -19,7 +19,7 @@ public class ProductCheckoutTest extends BasicSaucedemoTest {
         ProductsPage productsPage = new ProductsPage(driver);
 
         // Step 2 Select 2 products
-        productsPage.selectProductItems();
+        productsPage.selectProductItems("Sauce Labs Backpack","Sauce Labs Bolt T-Shirt");
 
         // Step 3 Click on the card element
         productsPage.goToShoppingCart();
