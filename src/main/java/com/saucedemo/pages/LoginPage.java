@@ -8,9 +8,11 @@ import org.openqa.selenium.WebElement;
 public class LoginPage {
 
     private final WebDriver driver;
+    
     private static final By USER_NAME_FIELD_LOCATOR = By.id("user-name");
     private static final By PASSWORD_FIELD_LOCATOR = By.id("password");
     private static final By LOGIN_BUTTON_LOCATOR = By.id("login-button");
+    
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
