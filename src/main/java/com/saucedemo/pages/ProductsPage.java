@@ -21,7 +21,7 @@ public class ProductsPage {
     }
 
     public void selectProductItems(String item01, String item02) {
-        WebElement item = wait.until(ExpectedConditions.presenceOfElementLocated(PRODUCT_ITEM_LOCATOR));
+        WebElement item = wait.until(ExpectedConditions.presenceOfElementLocated(PRODUCT_ITEMS_LOCATOR));
         item.click();
     }
 
