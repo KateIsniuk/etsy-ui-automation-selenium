@@ -13,7 +13,7 @@ public class ProductsPage {
     private final WebDriverWait wait;
     private final WebDriver driver;
     private static final long DEFAULT_WAIT_PERIOD = 10;
-    private static final By PRODUCT_ITEM_LOCATOR = By.xpath("//button[contains(text(), 'Add to cart')]");
+    private static final By PRODUCT_ITEMS_LOCATOR = By.xpath("//button[contains(text(), 'Add to cart')]");
     private static final By SHOPPING_CART_LOCATOR = By.cssSelector(".shopping_cart_link");
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
