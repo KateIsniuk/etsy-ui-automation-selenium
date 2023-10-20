@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 
 public class OrderCompletionPage {
     private final WebDriver driver;
+    
     private static final By ORDER_MESSAGE_LOCATOR = (By.xpath("//h2[contains(text(), 'Thank you for your order!')]"));
+    
     public OrderCompletionPage(WebDriver driver) {
         this.driver = driver;
     }
