@@ -10,33 +10,36 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class ProductCheckoutTest extends BasicSaucedemoTest {
-
+public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
     @Test
-    public void shouldSuccessfullyProceedWithCheckout() {
+    public void shouldSuccessfullyProceedWithCheckoutWhenItemRemovedFromCart() {
 
-        // Step 1 Login as standard user
+        // Step 1 Login performance_glitch_user
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user","secret_sauce");
+        loginPage.login("performance_glitch_user","secret_sauce");
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        // Step 2 Select 2 products
-        List<String> itemsToSelect = Arrays.asList("Sauce Labs Bolt T-Shirt", "Sauce Labs Backpack");
+        // Step 2 Select 3 product items
+        List<String> itemsToSelect = Arrays.asList("Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Test.allTheThings() T-Shirt (Red)");
         productsPage.selectProductItems(itemsToSelect);
-
-        // Step 3 Click on "add to cart" button inside the product page
-        productsPage.addToCartButton();
 
         // Step 3 Click on the card element
         productsPage.goToShoppingCart();
 
-        // Step 4 Click on "Checkout" button
+        // TBD >> Step 4 Find the third item by name, then remove it from the cart.
+
+        // Step 5 Click on "Checkout" button
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.clickCheckoutButton();
 
         // Step 5 Fill in checkout form
         checkoutPage.fillInForm("John","Smith","01238");
+
+        // TBD: >>>
+        //	Validate in the Checkout Overview that:
+        //	It only contains the items that you want to purchase
+        //	The Item Total is right (should 2 items remain)
 
         // Step 6 Click on the "Continue" button
         checkoutPage.clickContinueButton();

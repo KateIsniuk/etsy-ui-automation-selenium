@@ -1,5 +1,7 @@
 package com.saucedemo;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.etsy.BaseEtsy;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -14,22 +16,21 @@ public class BasicSaucedemoTest {
     private static final Logger logger = Logger.getLogger(BaseEtsy.class.getName());
 
     public WebDriver driver;
-    @BeforeClass //move
+    private static final String HOST = "https://www.saucedemo.com";
+
+    @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        String url = "https://www.saucedemo.com";
-        driver.get(url);
+        driver.get(HOST);
         driver.manage().window().maximize();
-        logger.log(Level.INFO, "Page is opened");
+        logger.log(Level.INFO, "Navigating to saucedemo.com landing page");
     }
-
-
-    @AfterClass // move
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-        logger.log(Level.INFO, "Test is finished");
-    }
+//    @AfterClass
+//    public void tearDown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//        logger.log(Level.INFO, "Test is finished");
+//    }
 }
