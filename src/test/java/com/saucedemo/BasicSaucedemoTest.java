@@ -26,11 +26,11 @@ public class BasicSaucedemoTest {
         driver.manage().window().maximize();
         logger.log(Level.INFO, "Navigating to saucedemo.com landing page");
     }
-//    @AfterClass
-//    public void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//        logger.log(Level.INFO, "Test is finished");
-//    }
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+        logger.log(Level.INFO, "Test is finished");
+    }
 }

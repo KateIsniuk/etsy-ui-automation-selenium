@@ -31,6 +31,39 @@ public class ProductsPage {
                     By.xpath("//div[@class='inventory_item_name ' and text()='" + itemName + "']")));
         }
     }
+
+//    public List<WebElement> selectProductItems(String className) {
+//        List<WebElement> elements = driver.findElements(
+//                By.xpath("//div[@class='" + className + "']"));
+//        if (elements.size() >= 3) {
+//            WebElement thirdItem = elements.get(2); // Index 2 represents the third item in a zero-based index
+//            WebElement removeButton = thirdItem.findElement(By.xpath("//button[@data-test='remove-sauce-labs-backpack']"));
+//            removeButton.click();
+//        } else {
+//            System.out.println("There are fewer than three items to remove.");
+//        }
+//        return elements;
+//    }
+
+    public String getAndRemoveThirdProductName(String className) {
+        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='" + className + "']"));
+
+        // Check if there are at least three items
+        if (elements.size() >= 3) {
+            WebElement thirdItem = elements.get(2); // Index 2 represents the third item in a zero-based index
+            String itemName = thirdItem.getText();
+
+            WebElement removeButton = thirdItem.findElement(By.xpath("./following-sibling::button[starts-with(@data-test,'remove-')]"));
+            removeButton.click();
+
+            return itemName;
+        } else {
+            System.out.println("There are fewer than three items to remove.");
+            return null;
+        }
+    }
+
+
     public void addToCartButton() {
         WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(PRODUCT_ITEMS_LOCATOR_CART));
         addToCartButton.click();
