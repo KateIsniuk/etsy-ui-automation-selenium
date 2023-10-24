@@ -43,13 +43,9 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
 //        selectCartItemToRemove.get(0);
 
         String className = "cart_item"; // Specify the class name of the product items
-        String removedItemName = productsPage.getAndRemoveThirdProductName(className);
+        String removedItemName = productsPage.getAndRemoveThirdProductName();
 
-        if (removedItemName != null) {
-            System.out.println("Removed product: " + removedItemName);
-        } else {
-            System.out.println("No product was removed.");
-        }
+        System.out.println("Removed product: " + removedItemName);
 
 
         // Step 5 Click on "Checkout" button

@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -45,15 +44,15 @@ public class ProductsPage {
 //        return elements;
 //    }
 
-    public String getAndRemoveThirdProductName(String className) {
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='" + className + "']"));
-
+    public String getAndRemoveThirdProductName() {
+        List<WebElement> itemNames = driver.findElements(By.className("inventory_item_name"));
         // Check if there are at least three items
-        if (elements.size() >= 3) {
-            WebElement thirdItem = elements.get(2); // Index 2 represents the third item in a zero-based index
-            String itemName = thirdItem.getText();
+        if (itemNames.size() >= 3) {
+            String itemName = itemNames.get(2).getText(); // Index 2 represents the third item in a zero-based index
 
-            WebElement removeButton = thirdItem.findElement(By.xpath("./following-sibling::button[starts-with(@data-test,'remove-')]"));
+            WebElement removeButton = driver.findElement(
+                    By.xpath("//div[@class='inventory_item_name'][text()='"
+                            + itemName + "']/following::button[starts-with(@data-test,'remove-')]"));
             removeButton.click();
 
             return itemName;
