@@ -31,7 +31,8 @@ public class ProductsPage {
                     By.xpath("//div[@class='inventory_item_name ' and text()='" + itemName + "']")));
         }
     }
-
+//one of the variants
+    
 //    public List<WebElement> selectProductItems(String className) {
 //        List<WebElement> elements = driver.findElements(
 //                By.xpath("//div[@class='" + className + "']"));
