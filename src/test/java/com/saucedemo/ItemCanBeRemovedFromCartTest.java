@@ -33,21 +33,22 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
                 "Sauce Labs Onesie",
                 "Test.allTheThings() T-Shirt (Red)");
         productsPage.selectProductItems(itemsToSelect);
+
+        // Step 3 Click on the card button for all product items
         productsPage.addToCartButtons();
 
-        // Step 3 Click on the card element
+        // Step 4 Click on the card icon
         productsPage.goToShoppingCart();
 
-        // Step 4 Find the third item by name, then remove it from the cart.
+        // Step 5 Find the third item by name, then remove it from the cart.
         String removedItemName = productsPage.getAndRemoveThirdProductName();
         System.out.println("Removed product: " + removedItemName);
 
-
-        // Step 5 Click on "Checkout" button
+        // Step 6 Click on "Checkout" button
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.clickCheckoutButton();
 
-        // Step 5 Fill in checkout form
+        // Step 7 Fill in checkout form
         checkoutPage.fillInForm("John","Smith","01238");
 
         // TBD: >>>
@@ -55,13 +56,13 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         //	It only contains the items that you want to purchase
         //	The Item Total is right (should 2 items remain)
 
-        // Step 6 Click on the "Continue" button
+        // Step  Click on the "Continue" button
         checkoutPage.clickContinueButton();
 
-        // Step 7 Click on the "Finish" button
+        // Step  Click on the "Finish" button
         checkoutPage.finishOrder();
 
-        // Step 8 Validate a message of  complete
+        // Step  Validate a message of  complete
         OrderCompletionPage orderCompletionPage = new OrderCompletionPage(driver);
 
         String actualMessage = orderCompletionPage.getOrderConfirmationMessage();

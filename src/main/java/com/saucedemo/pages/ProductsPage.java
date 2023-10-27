@@ -33,7 +33,6 @@ public class ProductsPage {
         for (String itemName : itemNames) {
             wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//div[@class='inventory_item_name ' and text()='" + itemName + "']")));
-
         }
     }
 
@@ -61,7 +60,6 @@ public class ProductsPage {
     public void addToCartButtons() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
                 PRODUCT_ITEMS_LOCATOR_CART));
-
         for (WebElement button : addToCartButtons) {
             button.click();
         }
