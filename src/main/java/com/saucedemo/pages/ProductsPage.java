@@ -77,7 +77,8 @@ public class ProductsPage {
 //            return null;
 //        }
 //    }
-
+// fixed method
+    
     public void addToCartButtons() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEMS_LOCATOR_CART));
 
