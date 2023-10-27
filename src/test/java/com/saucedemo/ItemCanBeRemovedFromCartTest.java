@@ -38,19 +38,12 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         // Step 3 Click on the card element
         productsPage.goToShoppingCart();
 
-        // TBD >> Step 4 Find the third item by name, then remove it from the cart.
-
-
-        List<WebElement> selectCartItemToRemove = productsPage.selectProductItems("inventory_item_name");
-        selectCartItemToRemove.get(2);
-//
-//        String className = "cart_item"; // Specify the class name of the product items
-//        String removedItemName = productsPage.getAndRemoveThirdProductName();
-//        System.out.println("Removed product: " + removedItemName);
+        // Step 4 Find the third item by name, then remove it from the cart.
+        String removedItemName = productsPage.getAndRemoveThirdProductName();
+        System.out.println("Removed product: " + removedItemName);
 
 
         // Step 5 Click on "Checkout" button
-
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.clickCheckoutButton();
 
