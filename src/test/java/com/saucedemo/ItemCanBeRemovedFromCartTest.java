@@ -27,25 +27,26 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         // Step 2 Select all product items
         List<String> itemsToSelect = Arrays.asList(
                 "Sauce Labs Backpack",
-                "Sauce Labs Bolt T-Shirt",
-                "Test.allTheThings() T-Shirt (Red)",
                 "Sauce Labs Bike Light",
+                "Sauce Labs Bolt T-Shirt",
                 "Sauce Labs Fleece Jacket",
-                "Sauce Labs Onesie");
+                "Sauce Labs Onesie",
+                "Test.allTheThings() T-Shirt (Red)");
         productsPage.selectProductItems(itemsToSelect);
+        productsPage.addToCartButtons();
 
         // Step 3 Click on the card element
         productsPage.goToShoppingCart();
 
         // TBD >> Step 4 Find the third item by name, then remove it from the cart.
 
-//        List<WebElement> selectCartItemToRemove = productsPage.selectProductItems("cart_list");
-//        selectCartItemToRemove.get(0);
 
-        String className = "cart_item"; // Specify the class name of the product items
-        String removedItemName = productsPage.getAndRemoveThirdProductName();
-
-        System.out.println("Removed product: " + removedItemName);
+        List<WebElement> selectCartItemToRemove = productsPage.selectProductItems("inventory_item_name");
+        selectCartItemToRemove.get(2);
+//
+//        String className = "cart_item"; // Specify the class name of the product items
+//        String removedItemName = productsPage.getAndRemoveThirdProductName();
+//        System.out.println("Removed product: " + removedItemName);
 
 
         // Step 5 Click on "Checkout" button

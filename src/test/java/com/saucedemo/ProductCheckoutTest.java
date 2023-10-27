@@ -26,7 +26,7 @@ public class ProductCheckoutTest extends BasicSaucedemoTest {
         productsPage.selectProductItems(itemsToSelect);
 
         // Step 3 Click on "add to cart" button inside the product page
-        productsPage.addToCartButton();
+        productsPage.addToCartButtons();
 
         // Step 3 Click on the card element
         productsPage.goToShoppingCart();
