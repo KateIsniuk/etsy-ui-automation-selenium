@@ -18,7 +18,6 @@ public class ProductsPage {
     private final WebDriver driver;
     private static final Logger logger = LoggerFactory.getLogger(ProductsPage.class);
 
-
     private static final long DEFAULT_WAIT_PERIOD = 10;
     private static final By PRODUCT_ITEMS_CART_LOCATOR = By.xpath("//button[contains(text(), 'Add to cart')]");
     private static final By SHOPPING_CART_LOCATOR = By.cssSelector(".shopping_cart_link");
@@ -58,7 +57,6 @@ public class ProductsPage {
                         + itemName + "']/following::button[starts-with(@data-test,'remove-')]")));
         removeButton.click();
     }
-
 
     public void addToCartButtons() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
