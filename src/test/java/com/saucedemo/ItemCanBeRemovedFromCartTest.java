@@ -53,7 +53,7 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         // Step # Fill in checkout form
         checkoutPage.fillInForm("John","Smith","01238");
 
-        // TBD: >>>
+        // TBD: >>> Remove it to second test
         //	Validate in the Checkout Overview that:
         //	It only contains the items that you want to purchase
         //	The Item Total is right (should 2 items remain)
