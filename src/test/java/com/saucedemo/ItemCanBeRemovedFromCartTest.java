@@ -47,6 +47,8 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         // Step 6 Remove item # 3 from the cart
         productsPage.removeItemFormTheCart(itemName);
 
+        //Log level
+
         logger.info("Removed product: " + itemName);
 
         System.out.println("Removed product: " + itemName);
