@@ -6,8 +6,13 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
+    private static final Logger logger = Logger.getLogger(ItemCanBeRemovedFromCartTest.class.getName());
 
     @Test
     public void shouldSuccessfullyProceedWithCheckoutWhenItemRemovedFromCart() {
@@ -41,6 +46,10 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
 
         // Step 6 Remove item # 3 from the cart
         productsPage.removeItemFormTheCart(itemName);
+
+        logger.info("Removed product: " + itemName);
+
         System.out.println("Removed product: " + itemName);
+
     }
 }

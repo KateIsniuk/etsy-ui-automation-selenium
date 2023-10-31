@@ -7,13 +7,18 @@ import com.saucedemo.pages.ProductsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
+
+    private static final Logger logger = LoggerFactory.getLogger(CheckoutOverviewValidationTest.class);
    
     @Test
-    public void shouldSuccessfullyProceedWithCheckoutWhenItemRemovedFromCart() {
+    public void checkoutOverviewSuccessfulValidation() {
 
         //Validation 6 sub part (5):
 
