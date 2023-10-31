@@ -20,9 +20,11 @@ public class ProductsPage {
 
 
     private static final long DEFAULT_WAIT_PERIOD = 10;
-    private static final By PRODUCT_ITEMS_LOCATOR_CART = By.xpath("//button[contains(text(), 'Add to cart')]");
+    private static final By PRODUCT_ITEMS_CART_LOCATOR = By.xpath("//button[contains(text(), 'Add to cart')]");
     private static final By SHOPPING_CART_LOCATOR = By.cssSelector(".shopping_cart_link");
     private static final By ADD_TO_CART_BUTTON_INSIDE_PRODUCT_PAGE = By.cssSelector("add-to-cart-sauce-labs-bolt-t-shirt");
+    private static final By PRODUCT_ITEM_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
+
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
@@ -36,30 +38,31 @@ public class ProductsPage {
         }
     }
 
-    public String getAndRemoveThirdProductName() {
-        List<WebElement> itemNames = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-                By.cssSelector(".inventory_item_name")));
+    public String getProductNameElement() {
+        List<WebElement> itemNames = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
 
         // Check if there are at least three items
         if (itemNames.size() >= 3) {
             String itemName = itemNames.get(2).getText();
             System.out.println("Item Name: " + itemName);
-
-            WebElement removeButton = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='"
-                            + itemName + "']/following::button[starts-with(@data-test,'remove-')]")));
-            removeButton.click();
-
             return itemName;
         } else {
             System.out.println("There are less than three items to remove.");
-            return null;
         }
+        return null;
     }
+
+    public void removeItemFormTheCart(String itemName) {
+        WebElement removeButton = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='"
+                        + itemName + "']/following::button[starts-with(@data-test,'remove-')]")));
+        removeButton.click();
+    }
+
 
     public void addToCartButtons() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-                PRODUCT_ITEMS_LOCATOR_CART));
+                PRODUCT_ITEMS_CART_LOCATOR));
         for (WebElement button : addToCartButtons) {
             button.click();
         }

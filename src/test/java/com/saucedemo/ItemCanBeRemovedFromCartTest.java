@@ -4,7 +4,6 @@ import com.saucedemo.pages.CheckoutPage;
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.OrderCompletionPage;
 import com.saucedemo.pages.ProductsPage;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,13 +17,13 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
 
         //Validation 6:
 
-        // Step 1 Login performance_glitch_user
+        // Step # Login performance_glitch_user
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("performance_glitch_user","secret_sauce");
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        // Step 2 Select all product items
+        // Step # Select all product items
         List<String> itemsToSelect = Arrays.asList(
                 "Sauce Labs Backpack",
                 "Sauce Labs Bike Light",
@@ -34,21 +33,24 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
                 "Test.allTheThings() T-Shirt (Red)");
         productsPage.selectProductItems(itemsToSelect);
 
-        // Step 3 Click on the card button for all product items
+        // Step # Click on the card button for all product items
         productsPage.addToCartButtons();
 
-        // Step 4 Click on the card icon
+        // Step # Click on the card icon
         productsPage.goToShoppingCart();
 
-        // Step 5 Find the third item by name, then remove it from the cart.
-        String removedItemName = productsPage.getAndRemoveThirdProductName();
-        System.out.println("Removed product: " + removedItemName);
+        // Step # Find the third item by name
+        String itemName = productsPage.getProductNameElement();
 
-        // Step 6 Click on "Checkout" button
+        // Step # Remove item # 3 from the cart
+        productsPage.removeItemFormTheCart(itemName);
+        System.out.println("Removed product: " + itemName);
+
+        // Step # Click on "Checkout" button
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.clickCheckoutButton();
 
-        // Step 7 Fill in checkout form
+        // Step # Fill in checkout form
         checkoutPage.fillInForm("John","Smith","01238");
 
         // TBD: >>>
@@ -56,13 +58,13 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         //	It only contains the items that you want to purchase
         //	The Item Total is right (should 2 items remain)
 
-        // Step  Click on the "Continue" button
+        // Step # Click on the "Continue" button
         checkoutPage.clickContinueButton();
 
-        // Step  Click on the "Finish" button
+        // Step # Click on the "Finish" button
         checkoutPage.finishOrder();
 
-        // Step  Validate a message of  complete
+        // Step # Validate a message of  complete
         OrderCompletionPage orderCompletionPage = new OrderCompletionPage(driver);
 
         String actualMessage = orderCompletionPage.getOrderConfirmationMessage();
