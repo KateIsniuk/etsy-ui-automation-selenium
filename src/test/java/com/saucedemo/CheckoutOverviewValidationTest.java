@@ -58,10 +58,10 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         // Step # Click on the "Continue" button
         checkoutPage.clickContinueButton();
 
-        //	Step # Validate in the Checkout Overview that:
+        // Step # Validate in the Checkout Overview that:
         List<String> itemElement = checkoutPage.validateItemsList();
 
-        //	It only contains the items that you want to purchase (5)
+        // It only contains the items that you want to purchase (5)
 
         Assert.assertEquals(itemElement.size(), 5,
                 "Incorrect number of items in the checkout overview. Expected 5 items. Actual items: " + itemElement);
