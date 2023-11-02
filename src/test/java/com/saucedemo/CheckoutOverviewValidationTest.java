@@ -4,19 +4,15 @@ import com.saucedemo.pages.CheckoutPage;
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.OrderCompletionPage;
 import com.saucedemo.pages.ProductsPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(CheckoutOverviewValidationTest.class);
-   
     @Test
     public void checkoutOverviewSuccessfulValidation() {
 
@@ -24,7 +20,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
 
         // Step # Login performance_glitch_user
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("performance_glitch_user","secret_sauce");
+        loginPage.login("performance_glitch_user", "secret_sauce");
 
         ProductsPage productsPage = new ProductsPage(driver);
 
@@ -36,6 +32,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
                 "Sauce Labs Fleece Jacket",
                 "Sauce Labs Onesie",
                 "Test.allTheThings() T-Shirt (Red)");
+
         productsPage.selectProductItems(itemsToSelect);
 
         // Step # Click on the card button for all product items
@@ -56,15 +53,19 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         checkoutPage.clickCheckoutButton();
 
         // Step # Fill in checkout form
-        checkoutPage.fillInForm("John","Smith","01238");
-
-        // TBD: >>>
-        //	Validate in the Checkout Overview that:
-        //	It only contains the items that you want to purchase
-        //	The Item Total is right (should 2 items remain)
+        checkoutPage.fillInForm("John", "Smith", "01238");
 
         // Step # Click on the "Continue" button
         checkoutPage.clickContinueButton();
+
+        //	Step # Validate in the Checkout Overview that:
+        List<String> itemElement = checkoutPage.validateItemsList();
+
+        //	It only contains the items that you want to purchase (5)
+        Assert.assertEquals(itemElement.size(), 5,
+                "Incorrect number of items in the checkout overview. Expected 5 items. Actual items: " + itemElement);
+
+        checkoutPage.validateItemsList();
 
         // Step # Click on the "Finish" button
         checkoutPage.finishOrder();
@@ -73,6 +74,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         OrderCompletionPage orderCompletionPage = new OrderCompletionPage(driver);
 
         String actualMessage = orderCompletionPage.getOrderConfirmationMessage();
+       // Assert.assertEquals(actualMessage, "Thank you for your order!");
         Assert.assertEquals(actualMessage, "Thank you for your order!");
     }
 }

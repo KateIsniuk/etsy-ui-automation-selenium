@@ -4,6 +4,7 @@ import com.saucedemo.pages.CheckoutPage;
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.OrderCompletionPage;
 import com.saucedemo.pages.ProductsPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

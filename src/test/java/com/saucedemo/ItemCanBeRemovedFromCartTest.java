@@ -2,11 +2,11 @@ package com.saucedemo;
 
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.ProductsPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +48,6 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         productsPage.removeItemFormTheCart(itemName);
 
         //Log level
-
         logger.info("Removed product: " + itemName);
 
         System.out.println("Removed product: " + itemName);
