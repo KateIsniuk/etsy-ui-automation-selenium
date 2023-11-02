@@ -62,8 +62,11 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         List<String> itemElement = checkoutPage.validateItemsList();
 
         //	It only contains the items that you want to purchase (5)
+
         Assert.assertEquals(itemElement.size(), 5,
                 "Incorrect number of items in the checkout overview. Expected 5 items. Actual items: " + itemElement);
+        Assert.assertFalse(itemElement.contains(itemName),
+                "Item " + itemName + " should not be present in the checkout items list.");
 
         checkoutPage.validateItemsList();
 
@@ -74,7 +77,6 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         OrderCompletionPage orderCompletionPage = new OrderCompletionPage(driver);
 
         String actualMessage = orderCompletionPage.getOrderConfirmationMessage();
-       // Assert.assertEquals(actualMessage, "Thank you for your order!");
         Assert.assertEquals(actualMessage, "Thank you for your order!");
     }
 }
