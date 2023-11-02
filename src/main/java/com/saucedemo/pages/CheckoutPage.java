@@ -50,7 +50,8 @@ public class CheckoutPage {
     }
 
     public List<String> validateItemsList() {
-        List<WebElement> validatedItemElements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
+        List<WebElement> validatedItemElements = wait.until(
+            ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
 
         List<String> validatedItemNames = new ArrayList<>();
 
