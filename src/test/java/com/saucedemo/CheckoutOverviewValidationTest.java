@@ -4,7 +4,6 @@ import com.saucedemo.pages.CheckoutPage;
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.OrderCompletionPage;
 import com.saucedemo.pages.ProductsPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -33,7 +32,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
                 "Sauce Labs Onesie",
                 "Test.allTheThings() T-Shirt (Red)");
 
-        productsPage.selectProductItems(itemsToSelect);
+        productsPage.waitForItems(itemsToSelect);
 
         // Step # Click on the card button for all product items
         productsPage.addToCartButtons();
@@ -61,13 +60,11 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         // Step # Validate in the Checkout Overview that:
         List<String> itemElement = checkoutPage.validateItemsList();
 
-        // It only contains the items that you want to purchase (5)
-
+        // Step # Validate in the Checkout Overview that itemName is not present in itemElement
         Assert.assertEquals(itemElement.size(), 5,
                 "Incorrect number of items in the checkout overview. Expected 5 items. Actual items: " + itemElement);
         Assert.assertFalse(itemElement.contains(itemName),
                 "Item " + itemName + " should not be present in the checkout items list.");
-
         checkoutPage.validateItemsList();
 
         // Step # Click on the "Finish" button

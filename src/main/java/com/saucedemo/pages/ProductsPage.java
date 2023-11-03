@@ -31,7 +31,7 @@ public class ProductsPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_PERIOD));
     }
 
-    public void selectProductItems(List<String> itemNames) {
+    public void waitForItems(List<String> itemNames) {
         for (String itemName : itemNames) {
             wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//div[@class='inventory_item_name ' and text()='" + itemName + "']")));
@@ -39,7 +39,8 @@ public class ProductsPage {
     }
 
     public String getProductNameElement() {
-        List<WebElement> itemNames = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
+        List<WebElement> itemNames = wait.until(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
 
         // Check if there are at least three items
         if (itemNames.size() >= 3) {

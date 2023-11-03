@@ -2,13 +2,11 @@ package com.saucedemo;
 
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.ProductsPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
@@ -33,7 +31,7 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
                 "Sauce Labs Fleece Jacket",
                 "Sauce Labs Onesie",
                 "Test.allTheThings() T-Shirt (Red)");
-        productsPage.selectProductItems(itemsToSelect);
+        productsPage.waitForItems(itemsToSelect);
 
         // Step 3 Click on the card button for all product items
         productsPage.addToCartButtons();

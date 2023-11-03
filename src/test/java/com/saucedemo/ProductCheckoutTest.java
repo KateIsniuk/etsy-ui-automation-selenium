@@ -4,7 +4,6 @@ import com.saucedemo.pages.CheckoutPage;
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.OrderCompletionPage;
 import com.saucedemo.pages.ProductsPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,7 +23,7 @@ public class ProductCheckoutTest extends BasicSaucedemoTest {
 
         // Step 2 Select 2 products
         List<String> itemsToSelect = Arrays.asList("Sauce Labs Bolt T-Shirt", "Sauce Labs Backpack");
-        productsPage.selectProductItems(itemsToSelect);
+        productsPage.waitForItems(itemsToSelect);
 
         // Step 3 Click on "add to cart" button inside the product page
         productsPage.addToCartButtons();
