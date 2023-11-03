@@ -15,7 +15,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
     @Test
     public void checkoutOverviewSuccessfulValidation() {
 
-        //Validation 6 sub part (5):
+        //Validation 6 subpart (5):
 
         // Step # Login performance_glitch_user
         LoginPage loginPage = new LoginPage(driver);
