@@ -24,6 +24,7 @@ public class ProductsPage {
     private static final By ADD_TO_CART_BUTTON_INSIDE_PRODUCT_PAGE = By.cssSelector("add-to-cart-sauce-labs-bolt-t-shirt");
     private static final By PRODUCT_ITEM_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
     private static final String ITEM_BY_NAME_SELECTOR = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
+    private static final String ITEM_NAME_LIST = "//div[@class='inventory_item_name ' and text()='%s']";
 
 
     public ProductsPage(WebDriver driver) {
@@ -33,8 +34,9 @@ public class ProductsPage {
 
     public void waitForItems(List<String> itemNames) {
         for (String itemName : itemNames) {
+            String itemListSelector = String.format(ITEM_NAME_LIST, itemName);
             wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//div[@class='inventory_item_name ' and text()='" + itemName + "']")));
+                    By.xpath(itemListSelector)));
         }
     }
 
