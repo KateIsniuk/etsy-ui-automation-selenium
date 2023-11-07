@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 
-
 import java.time.Duration;
 import java.util.List;
 
@@ -24,6 +23,7 @@ public class ProductsPage {
     private static final By SHOPPING_CART_LOCATOR = By.cssSelector(".shopping_cart_link");
     private static final By ADD_TO_CART_BUTTON_INSIDE_PRODUCT_PAGE = By.cssSelector("add-to-cart-sauce-labs-bolt-t-shirt");
     private static final By PRODUCT_ITEM_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
+    private static final String ITEM_BY_NAME_SELECTOR = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
 
 
     public ProductsPage(WebDriver driver) {
@@ -38,27 +38,27 @@ public class ProductsPage {
         }
     }
 
-    public String getProductNameElement() {
+    public String getProductTitleWithIndex(int index) {
         List<WebElement> itemNames = wait.until(
                 ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
 
         // Check if there are at least three items
-        if (itemNames.size() >= 3) {
-            String itemName = itemNames.get(2).getText();
+        if (itemNames.size() >= index - 1) {
+            String itemName = itemNames.get(index - 1).getText();
             System.out.println("Item Name: " + itemName);
             return itemName;
         } else {
-            System.out.println("There are less than three items to remove.");
+            System.out.println("Can not remove item with " + index);
         }
         return null;
     }
 
     public void removeItemFormTheCart(String itemName) {
-        WebElement removeButton = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='"
-                        + itemName + "']/following::button[starts-with(@data-test,'remove-')]")));
+        String concreteItemSelector = String.format(ITEM_BY_NAME_SELECTOR, itemName);
+        WebElement removeButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(concreteItemSelector)));
         removeButton.click();
     }
+
 
     public void addToCartButtons() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(

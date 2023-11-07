@@ -15,6 +15,7 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
     @Test
     public void shouldSuccessfullyProceedWithCheckoutWhenItemRemovedFromCart() {
 
+        int itemIndexToRemove = 3;
         //Validation 6 - first 4 steps implemented in this test:
 
         // Step 1 Login performance_glitch_user
@@ -40,7 +41,8 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         productsPage.goToShoppingCart();
 
         // Step 5 Find the third item by name
-        String itemName = productsPage.getProductNameElement();
+
+        String itemName = productsPage.getProductTitleWithIndex(itemIndexToRemove);
 
         // Step 6 Remove item # 3 from the cart
         productsPage.removeItemFormTheCart(itemName);

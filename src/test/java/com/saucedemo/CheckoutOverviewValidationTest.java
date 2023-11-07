@@ -15,6 +15,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
     @Test
     public void checkoutOverviewSuccessfulValidation() {
 
+
         //Validation 6 subpart (5):
 
         // Step # Login performance_glitch_user
@@ -40,13 +41,6 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         // Step # Click on the card icon
         productsPage.goToShoppingCart();
 
-        // Step # Find the third item by name
-        String itemName = productsPage.getProductNameElement();
-
-        // Step # Remove item # 3 from the cart
-        productsPage.removeItemFormTheCart(itemName);
-        System.out.println("Removed product: " + itemName);
-
         // Step # Click on "Checkout" button
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.clickCheckoutButton();
@@ -59,13 +53,6 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
 
         // Step # Validate in the Checkout Overview that:
         List<String> itemElement = checkoutPage.validateItemsList();
-
-        // Step # Validate in the Checkout Overview that itemName is not present in itemElement
-        Assert.assertEquals(itemElement.size(), 5,
-                "Incorrect number of items in the checkout overview. Expected 5 items. Actual items: " + itemElement);
-        Assert.assertFalse(itemElement.contains(itemName),
-                "Item " + itemName + " should not be present in the checkout items list.");
-        checkoutPage.validateItemsList();
 
         // Step # Click on the "Finish" button
         checkoutPage.finishOrder();
