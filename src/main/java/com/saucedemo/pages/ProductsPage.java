@@ -59,7 +59,6 @@ public class ProductsPage {
         removeButton.click();
     }
 
-
     public void addToCartButtons() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
                 PRODUCT_ITEMS_CART_LOCATOR));
