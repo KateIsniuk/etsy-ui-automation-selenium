@@ -49,7 +49,6 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
 
         //Log level
         logger.info("Removed product: " + itemName);
-
         System.out.println("Removed product: " + itemName);
 
     }
