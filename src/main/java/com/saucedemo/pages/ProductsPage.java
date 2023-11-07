@@ -19,6 +19,9 @@ public class ProductsPage {
     private static final By SHOPPING_CART_LOCATOR = By.cssSelector(".shopping_cart_link");
     private static final By ADD_TO_CART_BUTTON_INSIDE_PRODUCT_PAGE = By.cssSelector("add-to-cart-sauce-labs-bolt-t-shirt");
     private static final By PRODUCT_ITEM_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
+    private static final By DROPDOWN_LOCATOR = By.cssSelector(".product_sort_container");
+    private static final By SORT_PRICE_FROM_LOW_TO_HIGH_LOCATOR = By.cssSelector(".product_sort_container > option[value='lohi']");
+    private static final By SORT_PRICE_FROM_HIGH_TO_LOW_LOCATOR = By.cssSelector(".product_sort_container > option[value='hilo']");
     private static final String ITEM_BY_NAME_SELECTOR = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
     private static final String ITEM_NAME_LIST = "//div[@class='inventory_item_name ' and text()='%s']";
 
@@ -34,6 +37,22 @@ public class ProductsPage {
                     By.xpath(itemListSelector)));
         }
     }
+
+    public void sortingDropdown() {
+        WebElement sortDropdown = driver.findElement(DROPDOWN_LOCATOR);
+        sortDropdown.click();
+    }
+
+    public void sortByPriceLowToHigh() {
+        WebElement sortFromLowToHigh = driver.findElement(SORT_PRICE_FROM_LOW_TO_HIGH_LOCATOR);
+        sortFromLowToHigh.click();
+    }
+
+    public void sortByPriceHighToLow() {
+        WebElement sortFromHighToLow = driver.findElement(SORT_PRICE_FROM_HIGH_TO_LOW_LOCATOR);
+        sortFromHighToLow.click();
+    }
+
 
     public String getProductTitleWithIndex(int index) {
         List<WebElement> itemNames = wait.until(

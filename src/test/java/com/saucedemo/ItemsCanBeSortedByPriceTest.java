@@ -22,17 +22,15 @@ public class ItemsCanBeSortedByPriceTest extends BasicSaucedemoTest {
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        // Step # Select all product items
-        List<String> itemsToSelect = Arrays.asList(
-                "Sauce Labs Backpack",
-                "Sauce Labs Bike Light",
-                "Sauce Labs Bolt T-Shirt",
-                "Sauce Labs Fleece Jacket",
-                "Sauce Labs Onesie",
-                "Test.allTheThings() T-Shirt (Red)");
-        productsPage.waitForItems(itemsToSelect);
+        // Step # Click on Dropdown element
+        productsPage.sortingDropdown();
 
-        // Sort products by price
+        // Sort products by price Low to High
+        productsPage.sortByPriceLowToHigh();
+
+        // Sort products by price High to Low
+        productsPage.sortByPriceHighToLow();
+
 
         // Validate that the sorting is right
 
