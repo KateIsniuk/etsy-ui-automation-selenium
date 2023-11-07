@@ -57,6 +57,7 @@ public class CheckoutPage {
 
         for (WebElement itemElement : validatedItemElements){
             validatedItemNames.add(itemElement.getText());
+            System.out.println(validatedItemNames);
         }
         return validatedItemNames;
     }

@@ -15,6 +15,7 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
     @Test
     public void checkoutOverviewSuccessfulValidation() {
 
+        int itemIndexToRemove = 3;
 
         //Validation 6 subpart (5):
 
@@ -25,15 +26,15 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         ProductsPage productsPage = new ProductsPage(driver);
 
         // Step # Select all product items
-        List<String> itemsToSelect = Arrays.asList(
-                "Sauce Labs Backpack",
-                "Sauce Labs Bike Light",
-                "Sauce Labs Bolt T-Shirt",
-                "Sauce Labs Fleece Jacket",
-                "Sauce Labs Onesie",
-                "Test.allTheThings() T-Shirt (Red)");
-
-        productsPage.waitForItems(itemsToSelect);
+//        List<String> itemsToSelect = Arrays.asList(
+//                "Sauce Labs Backpack",
+//                "Sauce Labs Bike Light",
+//                "Sauce Labs Bolt T-Shirt",
+//                "Sauce Labs Fleece Jacket",
+//                "Sauce Labs Onesie",
+//                "Test.allTheThings() T-Shirt (Red)");
+//
+//        productsPage.waitForItems(itemsToSelect);
 
         // Step # Click on the card button for all product items
         productsPage.addToCartButtons();
@@ -51,8 +52,14 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
         // Step # Click on the "Continue" button
         checkoutPage.clickContinueButton();
 
-        // Step # Validate in the Checkout Overview that:
+        // Step # Remove item # 3 from the cart and validate in the Checkout Overview
+        String itemName = productsPage.getProductTitleWithIndex(itemIndexToRemove);
+
+        productsPage.removeItemFormTheCart(itemName);
+
         List<String> itemElement = checkoutPage.validateItemsList();
+
+        Assert.assertFalse(itemElement.contains(itemName), "Item " + itemName + " should not be present in the checkout items list.");
 
         // Step # Click on the "Finish" button
         checkoutPage.finishOrder();

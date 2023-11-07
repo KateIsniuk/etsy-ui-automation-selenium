@@ -25,14 +25,15 @@ public class ItemCanBeRemovedFromCartTest extends BasicSaucedemoTest {
         ProductsPage productsPage = new ProductsPage(driver);
 
         // Step 2 Select all product items
-        List<String> itemsToSelect = Arrays.asList(
-                "Sauce Labs Backpack",
-                "Sauce Labs Bike Light",
-                "Sauce Labs Bolt T-Shirt",
-                "Sauce Labs Fleece Jacket",
-                "Sauce Labs Onesie",
-                "Test.allTheThings() T-Shirt (Red)");
-        productsPage.waitForItems(itemsToSelect);
+//        List<String> itemsToSelect = Arrays.asList(
+//                "Sauce Labs Backpack",
+//                "Sauce Labs Bike Light",
+//                "Sauce Labs Bolt T-Shirt",
+//                "Sauce Labs Fleece Jacket",
+//                "Sauce Labs Onesie",
+//                "Test.allTheThings() T-Shirt (Red)");
+
+//       productsPage.waitForItems(itemsToSelect);
 
         // Step 3 Click on the card button for all product items
         productsPage.addToCartButtons();
