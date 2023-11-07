@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
-
 
 import java.time.Duration;
 import java.util.List;
@@ -16,7 +13,6 @@ public class ProductsPage {
 
     private final WebDriverWait wait;
     private final WebDriver driver;
-    private static final Logger logger = LoggerFactory.getLogger(ProductsPage.class);
 
     private static final long DEFAULT_WAIT_PERIOD = 10;
     private static final By PRODUCT_ITEMS_CART_LOCATOR = By.xpath("//button[contains(text(), 'Add to cart')]");
@@ -25,7 +21,6 @@ public class ProductsPage {
     private static final By PRODUCT_ITEM_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
     private static final String ITEM_BY_NAME_SELECTOR = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
     private static final String ITEM_NAME_LIST = "//div[@class='inventory_item_name ' and text()='%s']";
-
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
