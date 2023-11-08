@@ -23,7 +23,7 @@ public class ProductCheckoutTest extends BasicSaucedemoTest {
 
         // Step 2 Select 2 products
         List<String> itemsToSelect = Arrays.asList("Sauce Labs Bolt T-Shirt", "Sauce Labs Backpack");
-        productsPage.waitForItems(itemsToSelect);
+        productsPage.waitForItemNamesToBeVisible(itemsToSelect);
 
         // Step 3 Click on "add to cart" button inside the product page
         productsPage.addToCartButtons();

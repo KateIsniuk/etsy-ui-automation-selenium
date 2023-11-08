@@ -54,11 +54,9 @@ public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
 
         // Step # Remove item # 3 from the cart and validate in the Checkout Overview
         String itemName = productsPage.getProductTitleWithIndex(itemIndexToRemove);
-
         productsPage.removeItemFormTheCart(itemName);
 
         List<String> itemElement = checkoutPage.validateItemsList();
-
         Assert.assertFalse(itemElement.contains(itemName), "Item " + itemName + " should not be present in the checkout items list.");
 
         // Step # Click on the "Finish" button

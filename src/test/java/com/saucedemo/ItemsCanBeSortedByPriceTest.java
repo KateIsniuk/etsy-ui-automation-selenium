@@ -2,9 +2,12 @@ package com.saucedemo;
 
 import com.saucedemo.pages.LoginPage;
 import com.saucedemo.pages.ProductsPage;
+import junit.framework.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -25,14 +28,12 @@ public class ItemsCanBeSortedByPriceTest extends BasicSaucedemoTest {
         // Step # Click on Dropdown element
         productsPage.sortingDropdown();
 
-        // Sort products by price Low to High
+        // Step # Click on Sort products by price Low to High
         productsPage.sortByPriceLowToHigh();
 
-        // Sort products by price High to Low
+
+        // Step # Click on Sort products by price High to Low
         productsPage.sortByPriceHighToLow();
-
-
-        // Validate that the sorting is right
 
     }
 }

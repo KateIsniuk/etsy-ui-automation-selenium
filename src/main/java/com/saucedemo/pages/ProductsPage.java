@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 
 public class ProductsPage {
@@ -22,15 +23,17 @@ public class ProductsPage {
     private static final By DROPDOWN_LOCATOR = By.cssSelector(".product_sort_container");
     private static final By SORT_PRICE_FROM_LOW_TO_HIGH_LOCATOR = By.cssSelector(".product_sort_container > option[value='lohi']");
     private static final By SORT_PRICE_FROM_HIGH_TO_LOW_LOCATOR = By.cssSelector(".product_sort_container > option[value='hilo']");
-    private static final String ITEM_BY_NAME_SELECTOR = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
+    private static final String ITEM_BY_NAME_SELECTOR_TO_REMOVE = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
     private static final String ITEM_NAME_LIST = "//div[@class='inventory_item_name ' and text()='%s']";
+    private static final By ITEM_PRICE_LIST = By.xpath("//div[@class='inventory_item_price' and text()='%s']");
+
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_PERIOD));
     }
 
-    public void waitForItems(List<String> itemNames) {
+    public void waitForItemNamesToBeVisible(List<String> itemNames) {
         for (String itemName : itemNames) {
             String itemListSelector = String.format(ITEM_NAME_LIST, itemName);
             wait.until(ExpectedConditions.presenceOfElementLocated(
@@ -53,7 +56,6 @@ public class ProductsPage {
         sortFromHighToLow.click();
     }
 
-
     public String getProductTitleWithIndex(int index) {
         List<WebElement> itemNames = wait.until(
                 ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
@@ -70,7 +72,7 @@ public class ProductsPage {
     }
 
     public void removeItemFormTheCart(String itemName) {
-        String concreteItemSelector = String.format(ITEM_BY_NAME_SELECTOR, itemName);
+        String concreteItemSelector = String.format(ITEM_BY_NAME_SELECTOR_TO_REMOVE, itemName);
         WebElement removeButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(concreteItemSelector)));
         removeButton.click();
     }
