@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsPage {
@@ -25,7 +25,7 @@ public class ProductsPage {
     private static final By SORT_PRICE_FROM_HIGH_TO_LOW_LOCATOR = By.cssSelector(".product_sort_container > option[value='hilo']");
     private static final String ITEM_BY_NAME_SELECTOR_TO_REMOVE = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
     private static final String ITEM_NAME_LIST = "//div[@class='inventory_item_name ' and text()='%s']";
-    private static final By ITEM_PRICE_LIST = By.xpath("//div[@class='inventory_item_price' and text()='%s']");
+    private static final String ITEM_PRICE_LIST = "//div[@class='inventory_item_price' and text()='%s']";
 
 
     public ProductsPage(WebDriver driver) {
@@ -39,6 +39,23 @@ public class ProductsPage {
             wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath(itemListSelector)));
         }
+    }
+
+//    List<WebElement> inventoryItems = getPurchaseItemsByName(itemNames);
+//        for (int i = 0; i < inventoryItems.size() - 1; i++) {
+//        WebElement target = inventoryItems.get(i);
+//        WebElement next = inventoryItems.get(i + 1);
+//
+//        double targetPrice = getPrice(target);
+//        double nextPrice = getPrice(next);
+//
+//        //compare 2 prices
+//        Assert.assertTrue(targetPrice < nextPrice, "woohoo");
+//    }
+
+    private double getPrice(WebElement item) {
+        String inventoryItemPrice = item.getDomAttribute("inventory_item_price");
+        return Double.valueOf(inventoryItemPrice);
     }
 
     public void sortingDropdown() {
@@ -69,6 +86,21 @@ public class ProductsPage {
             System.out.println("Can not remove item with " + index);
         }
         return null;
+    }
+
+    public List<Double> getItemPricesList() {
+        List<WebElement> itemPricesList = driver.findElements(By.cssSelector(".inventory_item_price"));
+        List<Double> itemPrices = new ArrayList<>();
+
+        for (WebElement itemPriceElement : itemPricesList) {
+            String itemPriceText = itemPriceElement.getText();
+
+            // Remove the "$" sign and convert the price to a double value
+            double itemPrice = Double.parseDouble(itemPriceText.substring(1));
+           // System.out.println(itemPrice);
+            itemPrices.add(itemPrice);
+        }
+        return itemPrices;
     }
 
     public void removeItemFormTheCart(String itemName) {
