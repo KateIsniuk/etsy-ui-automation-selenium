@@ -41,23 +41,6 @@ public class ProductsPage {
         }
     }
 
-//    List<WebElement> inventoryItems = getPurchaseItemsByName(itemNames);
-//        for (int i = 0; i < inventoryItems.size() - 1; i++) {
-//        WebElement target = inventoryItems.get(i);
-//        WebElement next = inventoryItems.get(i + 1);
-//
-//        double targetPrice = getPrice(target);
-//        double nextPrice = getPrice(next);
-//
-//        //compare 2 prices
-//        Assert.assertTrue(targetPrice < nextPrice, "woohoo");
-//    }
-
-    private double getPrice(WebElement item) {
-        String inventoryItemPrice = item.getDomAttribute("inventory_item_price");
-        return Double.valueOf(inventoryItemPrice);
-    }
-
     public void sortingDropdown() {
         WebElement sortDropdown = driver.findElement(DROPDOWN_LOCATOR);
         sortDropdown.click();
