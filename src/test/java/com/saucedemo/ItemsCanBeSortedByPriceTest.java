@@ -38,7 +38,7 @@ public class ItemsCanBeSortedByPriceTest extends BasicSaucedemoTest {
         // Validate if Prices sorted as expected from Low to High
         List<Double> expectedSortedPricesFromLowToHigh = Arrays.asList(7.99, 9.99, 15.99, 15.99, 29.99, 49.99);
         Assert.assertEquals(expectedSortedPricesFromLowToHigh,
-                productsPage.getItemPricesList(), "Prices are not sorted correctly");
+                productsPage.getItemPricesList(), "Prices are not sorted ascending");
 
         // Step # Click on Sort products by price High to Low
         productsPage.sortByPriceHighToLow();
@@ -49,6 +49,6 @@ public class ItemsCanBeSortedByPriceTest extends BasicSaucedemoTest {
         // Validate if Prices sorted as expected from Low to High
         List<Double> expectedSortedPricesFromHighToLoe = Arrays.asList(49.99,29.99,15.99,15.99,9.99,7.99);
         Assert.assertEquals(expectedSortedPricesFromHighToLoe,
-                productsPage.getItemPricesList(), "Prices are not sorted correctly");
+                productsPage.getItemPricesList(), "Prices are not sorted descending");
     }
 }
