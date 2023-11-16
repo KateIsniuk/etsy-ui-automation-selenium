@@ -1,5 +1,6 @@
 package com.saucedemo.pages;
 
+import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsPage {
@@ -71,20 +71,31 @@ public class ProductsPage {
         return null;
     }
 
-    public List<Double> getItemPricesList() {
+    //todo name it
+    public void validatePriceSorting(boolean asc) {
         List<WebElement> itemPricesList = driver.findElements(By.cssSelector(".inventory_item_price"));
-        List<Double> itemPrices = new ArrayList<>();
 
-        for (WebElement itemPriceElement : itemPricesList) {
-            String itemPriceText = itemPriceElement.getText();
+        for (int i = 0; i < itemPricesList.size() - 1; i++) {
 
-            // Remove the "$" sign and convert the price to a double value
-            double itemPrice = Double.parseDouble(itemPriceText.substring(1));
-           // System.out.println(itemPrice);
-            itemPrices.add(itemPrice);
+            WebElement current = itemPricesList.get(i);
+            WebElement next = itemPricesList.get(i + 1);
+
+            double currentItemPrice = ExtractItemPrice(current);
+            double nextItemPrice = ExtractItemPrice(next);
+
+            boolean result = asc ? currentItemPrice <= nextItemPrice
+                                 : currentItemPrice >= nextItemPrice;
+
+            Assert.isTrue(result, "The prices are not sorted correctly.");
         }
-        return itemPrices;
     }
+
+
+    public double ExtractItemPrice(WebElement itemPriceElement) { // Remove the "$" sign and convert the price to a double value
+        String itemPriceText = itemPriceElement.getText();
+        return Double.parseDouble(itemPriceText.substring(1));
+    }
+
 
     public void removeItemFormTheCart(String itemName) {
         String concreteItemSelector = String.format(ITEM_BY_NAME_SELECTOR_TO_REMOVE, itemName);
