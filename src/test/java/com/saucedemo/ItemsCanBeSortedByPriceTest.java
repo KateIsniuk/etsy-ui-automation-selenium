@@ -33,7 +33,6 @@ public class ItemsCanBeSortedByPriceTest extends BasicSaucedemoTest {
         // Step # Click on Sort products by price High to Low
         productsPage.sortByPriceHighToLow();
 
-
         // Validate if Prices sorted as expected from Low to High
         productsPage.validatePriceSorting(false);
 
