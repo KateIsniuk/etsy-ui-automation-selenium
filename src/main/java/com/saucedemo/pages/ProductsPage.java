@@ -71,7 +71,6 @@ public class ProductsPage {
         return null;
     }
 
-    //todo name it
     public void validatePriceSorting(boolean asc) {
         List<WebElement> itemPricesList = driver.findElements(By.cssSelector(".inventory_item_price"));
 
@@ -89,7 +88,6 @@ public class ProductsPage {
             Assert.isTrue(result, "The prices are not sorted correctly.");
         }
     }
-
 
     public double ExtractItemPrice(WebElement itemPriceElement) { // Remove the "$" sign and convert the price to a double value
         String itemPriceText = itemPriceElement.getText();
