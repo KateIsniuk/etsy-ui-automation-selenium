@@ -85,6 +85,13 @@ public class ProductsPage {
             boolean result = asc ? currentItemPrice <= nextItemPrice
                                  : currentItemPrice >= nextItemPrice;
 
+//            boolean result;
+//            if (asc) {
+//                result = currentItemPrice <= nextItemPrice;
+//            } else {
+//                result = currentItemPrice >= nextItemPrice;
+//            }
+
             Assert.isTrue(result, "The prices are not sorted correctly.");
         }
     }
