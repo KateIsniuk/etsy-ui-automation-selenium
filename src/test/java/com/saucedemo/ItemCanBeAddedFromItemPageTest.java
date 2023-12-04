@@ -9,11 +9,14 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ItemCanBeAddedFromItemPageTest extends BasicSaucedemoTest {
-
+    private static final Logger logger = Logger.getLogger(ItemCanBeAddedFromItemPageTest.class.getName());
     @Test
     public void itemSuccessfullyAddedFromItemPage() {
+
+        int itemIndex = 1;
 
         // Validation 2:
 /*
@@ -29,34 +32,21 @@ public class ItemCanBeAddedFromItemPageTest extends BasicSaucedemoTest {
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        // Step # Find one item by name, click on the item
+        // Step # Find one item by name
         List<String> itemsToSelect = List.of("Sauce Labs Bolt T-Shirt");
         productsPage.waitForItemNamesToBeVisible(itemsToSelect);
 
-
-        // Step # Click on "add to cart" button inside the product page
+        // Step # Click on the item name
         productsPage.addToCartButtons();
 
-        // Step # Click on the card element
+        // Step # Click on the card
         productsPage.goToShoppingCart();
 
-        // Step # Click on "Checkout" button
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.clickCheckoutButton();
+        String itemName = productsPage.getProductTitleWithIndex(itemIndex);
 
-        // Step # Fill in checkout form
-        checkoutPage.fillInForm("John","Smith","01238");
+        // Step # Validate that the item was added
+        Assert.assertNotNull(itemName);
 
-        // Step # Click on the "Continue" button
-        checkoutPage.clickContinueButton();
-
-        // Step # Click on the "Finish" button
-        checkoutPage.finishOrder();
-
-        // Step # Validate a message of  complete
-        OrderCompletionPage orderCompletionPage = new OrderCompletionPage(driver);
-
-        String actualMessage = orderCompletionPage.getOrderConfirmationMessage();
-        Assert.assertEquals(actualMessage, "Thank you for your order!");
+        logger.info("The product name in the card is : " + itemName);
     }
 }

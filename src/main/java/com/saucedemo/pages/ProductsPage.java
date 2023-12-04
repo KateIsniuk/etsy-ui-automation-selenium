@@ -109,14 +109,6 @@ public class ProductsPage {
         }
     }
 
-    public void itemNameLocator() {
-        List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-                PRODUCT_ITEMS_CART_LOCATOR));
-        for (WebElement button : addToCartButtons) {
-            button.click();
-        }
-    }
-
     public void goToShoppingCart() {
         WebElement card = driver.findElement(SHOPPING_CART_LOCATOR);
         card.click();
