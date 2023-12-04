@@ -100,13 +100,34 @@ public class ProductsPage {
             Assert.isTrue(result, "The prices are not sorted correctly.");
         }
     }
+    public void validateNameSorting(boolean asc) {
+        List<WebElement> itemNameList = wait.until(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(PRODUCT_ITEM_NAME_LOCATOR));
+
+        for (int i = 0; i < itemNameList.size() - 1; i++) {
+
+            WebElement current = itemNameList.get(i);
+            WebElement next = itemNameList.get(i + 1);
+
+            String currentItemName = extractItemName(current);
+            String nextItemName = extractItemName(next);
+
+            int comparisonResult = currentItemName.compareTo(nextItemName);
+
+            boolean result = asc ? (comparisonResult <= 0) : (comparisonResult >= 0);
+
+            Assert.isTrue(result, "The names are not sorted correctly.");
+        }
+    }
 
     public double extractItemPrice(WebElement itemPriceElement) { // Remove the "$" sign and convert the price to a double value
         String itemPriceText = itemPriceElement.getText();
         return Double.parseDouble(itemPriceText.substring(1));
     }
 
-
+    public String extractItemName(WebElement itemNameElement) {
+        return itemNameElement.getText();
+    }
     public void removeItemFormTheCart(String itemName) {
         String concreteItemSelector = String.format(ITEM_BY_NAME_SELECTOR_TO_REMOVE, itemName);
         WebElement removeButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(concreteItemSelector)));

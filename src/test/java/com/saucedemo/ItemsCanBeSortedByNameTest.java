@@ -34,12 +34,13 @@ public class ItemsCanBeSortedByNameTest extends BasicSaucedemoTest {
         productsPage.sortFromAToZ();
 
         // Validate if names are sorted as expected from A to Z
-
+        productsPage.validateNameSorting(true);
 
         // Step # Click on Sort products alphabetically from Z to A
         productsPage.sortFromZToA();
 
         // Validate if names are sorted as expected from Z to A
+        productsPage.validateNameSorting(false);
 
 
     }
