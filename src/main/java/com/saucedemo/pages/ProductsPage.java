@@ -23,6 +23,8 @@ public class ProductsPage {
     private static final By DROPDOWN_LOCATOR = By.cssSelector(".product_sort_container");
     private static final By SORT_PRICE_FROM_LOW_TO_HIGH_LOCATOR = By.cssSelector(".product_sort_container > option[value='lohi']");
     private static final By SORT_PRICE_FROM_HIGH_TO_LOW_LOCATOR = By.cssSelector(".product_sort_container > option[value='hilo']");
+    private static final By SORT_ALPHABETICALLY_FROM_A_TO_Z_LOCATOR = By.cssSelector(".product_sort_container > option[value='az']");
+    private static final By SORT_ALPHABETICALLY_FROM_Z_TO_Z_LOCATOR = By.cssSelector(".product_sort_container > option[value='za']");
     private static final String ITEM_BY_NAME_SELECTOR_TO_REMOVE = "//div[normalize-space(@class)='inventory_item_name'][normalize-space(text())='%s']/following::button[starts-with(@data-test,'remove-')]";
     private static final String ITEM_NAME_LIST = "//div[@class='inventory_item_name ' and text()='%s']";
     private static final String ITEM_PRICE_LIST = "//div[@class='inventory_item_price' and text()='%s']";
@@ -53,6 +55,16 @@ public class ProductsPage {
 
     public void sortByPriceHighToLow() {
         WebElement sortFromHighToLow = driver.findElement(SORT_PRICE_FROM_HIGH_TO_LOW_LOCATOR);
+        sortFromHighToLow.click();
+    }
+
+    public void sortFromAToZ() {
+        WebElement sortFromLowToHigh = driver.findElement(SORT_ALPHABETICALLY_FROM_A_TO_Z_LOCATOR);
+        sortFromLowToHigh.click();
+    }
+
+    public void sortFromZToA() {
+        WebElement sortFromHighToLow = driver.findElement(SORT_ALPHABETICALLY_FROM_Z_TO_Z_LOCATOR);
         sortFromHighToLow.click();
     }
 
