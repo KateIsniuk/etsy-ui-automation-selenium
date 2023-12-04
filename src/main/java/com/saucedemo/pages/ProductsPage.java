@@ -79,24 +79,17 @@ public class ProductsPage {
             WebElement current = itemPricesList.get(i);
             WebElement next = itemPricesList.get(i + 1);
 
-            double currentItemPrice = ExtractItemPrice(current);
-            double nextItemPrice = ExtractItemPrice(next);
+            double currentItemPrice = extractItemPrice(current);
+            double nextItemPrice = extractItemPrice(next);
 
             boolean result = asc ? currentItemPrice <= nextItemPrice
                                  : currentItemPrice >= nextItemPrice;
-
-//            boolean result;
-//            if (asc) {
-//                result = currentItemPrice <= nextItemPrice;
-//            } else {
-//                result = currentItemPrice >= nextItemPrice;
-//            }
 
             Assert.isTrue(result, "The prices are not sorted correctly.");
         }
     }
 
-    public double ExtractItemPrice(WebElement itemPriceElement) { // Remove the "$" sign and convert the price to a double value
+    public double extractItemPrice(WebElement itemPriceElement) { // Remove the "$" sign and convert the price to a double value
         String itemPriceText = itemPriceElement.getText();
         return Double.parseDouble(itemPriceText.substring(1));
     }
@@ -109,6 +102,14 @@ public class ProductsPage {
     }
 
     public void addToCartButtons() {
+        List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                PRODUCT_ITEMS_CART_LOCATOR));
+        for (WebElement button : addToCartButtons) {
+            button.click();
+        }
+    }
+
+    public void itemNameLocator() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
                 PRODUCT_ITEMS_CART_LOCATOR));
         for (WebElement button : addToCartButtons) {

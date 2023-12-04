@@ -10,44 +10,45 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
+public class ItemCanBeAddedFromItemPageTest extends BasicSaucedemoTest {
 
     @Test
-    public void checkoutOverviewSuccessfulValidation() {
+    public void itemSuccessfullyAddedFromItemPage() {
 
-        int itemIndexToRemove = 3;
+        // Validation 2:
+/*
+2.	Find one item by name, click on the item
+3.	Add it to the cart from the item page
+4.	Go to the cart
+5.	Validate that the item was added
+ */
 
-        //Validation 6 subpart (5):
-
-        // Step # Login performance_glitch_user
+        // Step # Login as problem_user user
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("performance_glitch_user", "secret_sauce");
+        loginPage.login("problem_user","secret_sauce");
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        // Step # Click on the card button for all product items
+        // Step # Find one item by name, click on the item
+        List<String> itemsToSelect = List.of("Sauce Labs Bolt T-Shirt");
+        productsPage.waitForItemNamesToBeVisible(itemsToSelect);
+
+
+        // Step # Click on "add to cart" button inside the product page
         productsPage.addToCartButtons();
 
-        // Step # Click on the card icon
+        // Step # Click on the card element
         productsPage.goToShoppingCart();
-
-        // Step # Remove item # 3 from the cart
-        String itemName = productsPage.getProductTitleWithIndex(itemIndexToRemove);
-        productsPage.removeItemFormTheCart(itemName);
 
         // Step # Click on "Checkout" button
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.clickCheckoutButton();
 
         // Step # Fill in checkout form
-        checkoutPage.fillInForm("John", "Smith", "01238");
+        checkoutPage.fillInForm("John","Smith","01238");
 
         // Step # Click on the "Continue" button
         checkoutPage.clickContinueButton();
-
-        // Step # Validate in the Checkout Overview
-        List<String> itemElement = checkoutPage.validateItemsList();
-        Assert.assertFalse(itemElement.contains(itemName), "Item " + itemName + " should not be present in the checkout items list.");
 
         // Step # Click on the "Finish" button
         checkoutPage.finishOrder();
