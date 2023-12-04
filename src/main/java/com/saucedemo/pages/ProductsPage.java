@@ -108,7 +108,7 @@ public class ProductsPage {
             button.click();
         }
     }
-
+//new itemName locator introduced 
     public void itemNameLocator() {
         List<WebElement> addToCartButtons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
                 PRODUCT_ITEMS_CART_LOCATOR));
