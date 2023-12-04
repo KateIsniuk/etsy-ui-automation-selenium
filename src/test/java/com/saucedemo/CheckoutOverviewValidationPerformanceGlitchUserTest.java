@@ -7,10 +7,9 @@ import com.saucedemo.pages.ProductsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class CheckoutOverviewValidationTest extends BasicSaucedemoTest {
+public class CheckoutOverviewValidationPerformanceGlitchUserTest extends BasicSaucedemoTest {
 
     @Test
     public void checkoutOverviewSuccessfulValidation() {
