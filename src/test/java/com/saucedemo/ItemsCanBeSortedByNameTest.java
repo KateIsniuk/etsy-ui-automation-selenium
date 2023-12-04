@@ -42,6 +42,5 @@ public class ItemsCanBeSortedByNameTest extends BasicSaucedemoTest {
         // Validate if names are sorted as expected from Z to A
         productsPage.validateNameSorting(false);
 
-
     }
 }
