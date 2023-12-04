@@ -16,7 +16,7 @@ public class CheckoutOverviewValidationPerformanceGlitchUserTest extends BasicSa
 
         int itemIndexToRemove = 3;
 
-        //Validation 6 subpart (5):
+        //Validation 6:
 
         // Step # Login performance_glitch_user
         LoginPage loginPage = new LoginPage(driver);
