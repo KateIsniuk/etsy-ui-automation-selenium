@@ -30,16 +30,16 @@ public class ItemsCanBeSortedByNameTest extends BasicSaucedemoTest {
         // Step # Click on Dropdown element
         productsPage.sortingDropdown();
 
-        // Step # Click on Sort products alphabetically from A ro Z
+        // Step # Click on Sort products alphabetically from A to Z
         productsPage.sortFromAToZ();
 
-        // Validate if names sorted as expected from A to Z
+        // Validate if names are sorted as expected from A to Z
 
 
-        // Step # Click on Sort products alphabetically from Z ro A
+        // Step # Click on Sort products alphabetically from Z to A
         productsPage.sortFromZToA();
 
-        // Validate if names sorted as expected from Z to A
+        // Validate if names are sorted as expected from Z to A
 
 
     }
