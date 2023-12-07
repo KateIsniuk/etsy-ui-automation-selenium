@@ -26,6 +26,7 @@ public class ApiTestsChallenge {
         var response = given().body(products).when().post(endpoint).then();
         response.log().body();
     }
+    
     @Test
     public void getProduct(){
         String endpoint = "http://localhost:8888/api_testing/product/read_one.php";
@@ -51,6 +52,7 @@ public class ApiTestsChallenge {
          var response = given().body(product).when().put(endpoint).then();
          response.log().body();
      }
+    
     @Test
     public void deleteProduct() {
         String endpoint = "http://localhost:8888/api_testing/product/delete.php";
@@ -62,5 +64,4 @@ public class ApiTestsChallenge {
         var response = given().body(body).when().delete(endpoint).then();
         response.log().body();
     }
-
 }
