@@ -99,6 +99,7 @@ public class ApiTestsChallenge {
         var response = given().body(body).when().delete(endpoint).then();
         response.log().body();
     }
+    
     @Test
     public void getSpecificProduct(){
         String endpoint = "http://localhost:8888/api_testing/product/read_one.php";
