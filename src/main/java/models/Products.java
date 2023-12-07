@@ -12,7 +12,6 @@ public class Products {
 
     //Used for POST requests
 
-
     public Products(String name, String description, double price, int category_id) {
        setName(name);
        setDescription(description);
@@ -21,6 +20,7 @@ public class Products {
     }
 
     //Used for PUT requests
+    
     public Products(int id, String name, String description, double price, int category_id) {
         setName(name);
         setDescription(description);
