@@ -1,6 +1,6 @@
 package apiglcourse;
 
-import models.Products;
+import models.Product;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -72,7 +72,7 @@ public class ApiTests {
     @Test
     public void createSerializedProduct(){
         String endpoint = "http://localhost:8888/api_testing/product/create.php";
-        Products products = new Products(
+        Product products = new Product(
                 "Blue water bottle",
                 "New product",
                 12,

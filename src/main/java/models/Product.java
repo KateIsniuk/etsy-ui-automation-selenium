@@ -1,6 +1,6 @@
 package models;
 
-public class Products {
+public class Product {
 
     private int id;
     private String name;
@@ -8,11 +8,11 @@ public class Products {
     private double price;
     private int category_id;
 
-    public Products(){}
+    public Product(){}
 
     //Used for POST requests
 
-    public Products(String name, String description, double price, int category_id) {
+    public Product(String name, String description, double price, int category_id) {
        setName(name);
        setDescription(description);
        setCategory_id(category_id);
@@ -21,12 +21,12 @@ public class Products {
 
     //Used for PUT requests
     
-    public Products(int id, String name, String description, double price, int category_id) {
+    public Product(int id, String name, String description, double price, int category_id) {
+        setId(id);
         setName(name);
         setDescription(description);
-        setCategory_id(category_id);
         setPrice(price);
-        setId(id);
+        setCategory_id(category_id);
     }
     public int getId() {
         return id;
