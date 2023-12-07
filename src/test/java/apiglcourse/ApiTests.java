@@ -1,5 +1,6 @@
 package apiglcourse;
 
+import models.Products;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -63,6 +64,20 @@ public class ApiTests {
                  }
                  """;
         var response = given().body(body).when().delete(endpoint).then();
+        response.log().body();
+    }
+
+    @Test
+    public void createSerializedProduct(){
+        String endpoint = "http://localhost:8888/api_testing/product/create.php";
+        Products products = new Products(
+                "Blue water bottle",
+                "New product",
+                12,
+                3
+        );
+
+        var response = given().body(products).when().post(endpoint).then();
         response.log().body();
     }
 }
