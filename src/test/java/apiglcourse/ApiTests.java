@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 public class ApiTests {
+   
     @Test
     public void getCategories(){
         String endpoint = "http://localhost:8888/api_testing/category/read.php";
@@ -55,6 +56,7 @@ public class ApiTests {
          var response = given().body(body).when().put(endpoint).then();
          response.log().body();
      }
+  
     @Test
     public void deleteProduct() {
         String endpoint = "http://localhost:8888/api_testing/product/delete.php";
@@ -76,7 +78,6 @@ public class ApiTests {
                 12,
                 3
         );
-
         var response = given().body(products).when().post(endpoint).then();
         response.log().body();
     }
