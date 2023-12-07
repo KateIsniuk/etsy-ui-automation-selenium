@@ -23,4 +23,46 @@ public class ApiTests {
                         then();
         response.log().body();
     }
+
+    @Test
+    public void createProducts(){
+        String endpoint = "http://localhost:8888/api_testing/product/create.php";
+        String body = """
+        {
+        "name": "TEST",
+        "description": "TEST",
+        "price": 50,
+        "category_id": 3
+        }
+        """;
+        var response = given().body(body).when().post(endpoint).then();
+        response.log().body();
+    }
+
+     @Test
+     public void updateProduct() {
+         String endpoint = "http://localhost:8888/api_testing/product/update.php";
+         String body = """
+                 {
+                 "id": 22
+                 "name": "TEST",
+                 "description": "TEST",
+                 "price": 25,
+                 "category_id": 3
+                 }
+                 """;
+         var response = given().body(body).when().put(endpoint).then();
+         response.log().body();
+     }
+    @Test
+    public void deleteProduct() {
+        String endpoint = "http://localhost:8888/api_testing/product/delete.php";
+        String body = """
+                 {
+                 "id": 22
+                 }
+                 """;
+        var response = given().body(body).when().delete(endpoint).then();
+        response.log().body();
+    }
 }
