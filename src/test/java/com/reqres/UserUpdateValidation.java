@@ -3,6 +3,7 @@ package com.reqres;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.StringContains.containsString;
 
 public class UserUpdateValidation {
 
@@ -29,11 +30,11 @@ public class UserUpdateValidation {
                         .then();
         // Log the response body
         response.log().body();
-	    
+
         // Validate that the response code is `200`
         response.assertThat().statusCode(200);
-	    
+
         // Validate that the response body matches the request body where applicable. Make a recursive comparison if possible
-	response.assertThat().body("updatedAt", containsString("2024-01-17"));
+        response.assertThat().body("updatedAt", containsString("2024-01-17"));
     }
 }
