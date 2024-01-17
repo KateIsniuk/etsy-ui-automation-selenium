@@ -14,7 +14,6 @@ public class WhenUserNotFound {
 3.	Validate that the response code is `404.`
      */
 
-
     @Test
     public void userNotFound() {
         String endpoint = "https://reqres.in/api/users/13";
