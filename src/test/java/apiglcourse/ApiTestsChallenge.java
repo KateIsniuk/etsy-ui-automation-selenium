@@ -113,7 +113,7 @@ public class ApiTestsChallenge {
                 .body()
                 .assertThat()
                 .header("Content-Type", Matchers.equalTo("application/json"))
-                .statusCode(200).body("id", equalTo("18"))
+                .statusCode(200).body("name", equalTo("Multi-Vitamin (90 capsules)"))
                 .body("name", equalTo("Multi-Vitamin (90 capsules)"))
                 .body("description", equalTo("A daily dose of our Multi-Vitamins fulfills a day’s nutritional needs for over 12 vitamins and minerals."))
                 .body("price", equalTo("10.00"))

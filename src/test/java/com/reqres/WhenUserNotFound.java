@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class WhenUserNotFound {
    
@@ -17,12 +18,12 @@ public class WhenUserNotFound {
     @Test
     public void userNotFound() {
         String endpoint = "https://reqres.in/api/users/13";
-        var response =
                 given()
                         .when()
                         .get(endpoint)
                         .then()
-                        .assertThat().statusCode(404)
-                        .log().body();
+                        .assertThat()
+                        .statusCode(404).log().body();
+
     }
 }
