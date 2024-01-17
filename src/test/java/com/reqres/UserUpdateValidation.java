@@ -29,8 +29,11 @@ public class UserUpdateValidation {
                         .then();
         // Log the response body
         response.log().body();
+	    
         // Validate that the response code is `200`
         response.assertThat().statusCode(200);
+	    
         // Validate that the response body matches the request body where applicable. Make a recursive comparison if possible
+	response.assertThat().body("updatedAt", containsString("2024-01-17"));
     }
 }
