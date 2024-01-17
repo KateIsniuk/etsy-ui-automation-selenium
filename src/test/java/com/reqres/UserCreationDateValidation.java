@@ -41,5 +41,4 @@ public class UserCreationDateValidation {
         response.assertThat().body("createdAt", containsString("2024-01-17"));
 
     }
-
 }
