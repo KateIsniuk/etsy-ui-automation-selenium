@@ -29,7 +29,7 @@ public class UserUpdateValidation {
                         .patch(endpoint)
                         .then();
         // Log the response body
-        response.log().body();
+        response.log().all();
 
         // Validate that the response code is `200`
         response.assertThat().statusCode(200);

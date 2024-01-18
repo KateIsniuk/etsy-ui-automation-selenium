@@ -32,7 +32,7 @@ public class UserCreationDateValidation {
                         .post(endpoint)
                         .then();
         // Log the response body
-        response.log().body();
+        response.log().all();
 
         // Validate that the response code is `201`
         response.assertThat().statusCode(201);
