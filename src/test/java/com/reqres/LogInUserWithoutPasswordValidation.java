@@ -19,7 +19,7 @@ public class LogInUserWithoutPasswordValidation {
     public void userCannotLogInWithoutPassword() {
         String endpoint = "https://reqres.in/api/login";
        
-	    // Login user without password
+	// Login user without password
 	    String body = """
                 {
                  "email": "peter@klaven"
@@ -37,7 +37,7 @@ public class LogInUserWithoutPasswordValidation {
         // Validate that the response code is `400`
         response.assertThat().statusCode(400);
 
-        // Validate that the error message is ` Missing password`
+        // Validate that the error message is ` Missing password` - documentation wasn't updated with new message 
         response.assertThat().body("error", containsString("Missing email or username"));
 
     }
