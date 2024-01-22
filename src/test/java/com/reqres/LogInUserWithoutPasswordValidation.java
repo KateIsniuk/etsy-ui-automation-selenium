@@ -39,6 +39,5 @@ public class LogInUserWithoutPasswordValidation {
 
         // Validate that the error message is ` Missing password` - documentation wasn't updated with new message 
         response.assertThat().body("error", containsString("Missing email or username"));
-
     }
 }
